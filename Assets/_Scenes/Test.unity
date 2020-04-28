@@ -297,8 +297,8 @@ GameObject:
   - component: {fileID: 1038946104}
   - component: {fileID: 1038946107}
   - component: {fileID: 1038946106}
-  - component: {fileID: 1038946108}
   - component: {fileID: 1038946109}
+  - component: {fileID: 1038946108}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -422,6 +422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _theRB: {fileID: 1038946106}
   _moveSpeed: 7
+  _theAnim: {fileID: 1038946109}
 --- !u!95 &1038946109
 Animator:
   serializedVersion: 3
