@@ -420,3 +420,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _theRB: {fileID: 1038946106}
+  _moveSpeed: 5

@@ -7,6 +7,7 @@ public class PlaerController : MonoBehaviour
 	#region Fields
 
 	[SerializeField] Rigidbody2D _theRB;
+	[SerializeField] float _moveSpeed = 5f;
 
 	#endregion
 
@@ -19,7 +20,7 @@ public class PlaerController : MonoBehaviour
 	
 	void Update() 
 	{
-		
+		_theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * _moveSpeed;
 	}
 	#endregion
 
