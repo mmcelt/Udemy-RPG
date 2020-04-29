@@ -10,6 +10,10 @@ public class AreaExit : MonoBehaviour
 	[SerializeField] string _areaToLoad;
 	public string _areaTransitionName;
 	[SerializeField] AreaEntrance _theEntrance;
+	[SerializeField] float _waitToLoad = 1f;
+
+	bool _shouldLoadAfterFade;
+	//float _waitToLoadCounter;
 
 	#endregion
 
@@ -22,7 +26,20 @@ public class AreaExit : MonoBehaviour
 
 	void Start() 
 	{
-		
+		//_waitToLoadCounter = _waitToLoad;
+	}
+
+	void Update()
+	{
+		if (_shouldLoadAfterFade)
+		{
+			_waitToLoad -= Time.deltaTime;
+		}
+		if (_waitToLoad <= 0)
+		{
+			SceneManager.LoadScene(_areaToLoad);
+			//_waitToLoadCounter = _waitToLoad;
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -30,7 +47,9 @@ public class AreaExit : MonoBehaviour
 		if (other.CompareTag("Player"))
 		{
 			PlayerController.Instance._areaTransitionName = _areaTransitionName;
-			SceneManager.LoadScene(_areaToLoad);
+
+			_shouldLoadAfterFade = true;
+			UIFade.Instance.FadeToBlack();
 		}
 	}
 	#endregion
