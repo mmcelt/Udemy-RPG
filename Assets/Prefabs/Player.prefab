@@ -155,6 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _theRB: {fileID: 4876303840150291772}
-  _moveSpeed: 7
+  _moveSpeed: 8
   _theAnim: {fileID: 4876303840150291771}
   _areaTransitionName: 
