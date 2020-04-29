@@ -11,6 +11,7 @@ public class PlayerController: MonoBehaviour
 	[SerializeField] Rigidbody2D _theRB;
 	[SerializeField] float _moveSpeed = 5f;
 	[SerializeField] Animator _theAnim;
+	public string _areaTransitionName;
 
 	#endregion
 

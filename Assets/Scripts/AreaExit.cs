@@ -8,17 +8,19 @@ public class AreaExit : MonoBehaviour
 	#region Fields
 
 	[SerializeField] string _areaToLoad;
+	public string _areaTransitionName;
+	[SerializeField] AreaEntrance _theEntrance;
 
 	#endregion
 
 	#region MonoBehaviour Methods
 
-	void Start() 
+	void Awake()
 	{
-		
+		_theEntrance._transitionName = _areaTransitionName;
 	}
-	
-	void Update() 
+
+	void Start() 
 	{
 		
 	}
@@ -27,6 +29,7 @@ public class AreaExit : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
+			PlayerController.Instance._areaTransitionName = _areaTransitionName;
 			SceneManager.LoadScene(_areaToLoad);
 		}
 	}

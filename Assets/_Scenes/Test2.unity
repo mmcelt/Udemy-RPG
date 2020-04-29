@@ -128,6 +128,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 903695769, guid: f212a4089b540354c9ffb257fb74b9c2, type: 3}
+      propertyPath: _transitionName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5526051855862086669, guid: f212a4089b540354c9ffb257fb74b9c2,
         type: 3}
       propertyPath: m_Name
@@ -135,8 +139,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5526051855862086670, guid: f212a4089b540354c9ffb257fb74b9c2,
         type: 3}
-      propertyPath: _areaToLoad
-      value: Test
+      propertyPath: _areaTransitionName
+      value: Countryside-1
       objectReference: {fileID: 0}
     - target: {fileID: 5526051855862086671, guid: f212a4089b540354c9ffb257fb74b9c2,
         type: 3}
