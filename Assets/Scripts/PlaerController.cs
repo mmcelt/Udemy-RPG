@@ -16,7 +16,7 @@ public class PlaerController : MonoBehaviour
 
 	void Start() 
 	{
-		
+		DontDestroyOnLoad(gameObject);
 	}
 	
 	void Update() 
