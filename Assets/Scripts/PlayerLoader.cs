@@ -12,17 +12,17 @@ public class PlayerLoader : MonoBehaviour
 
 	#region MonoBehaviour Methods
 
-	void Start() 
+	void Awake()
 	{
 		if (!PlayerController.Instance)
 		{
 			Instantiate(_player);
 		}
 	}
-	
-	void Update() 
+
+	void Start() 
 	{
-		
+
 	}
 	#endregion
 
