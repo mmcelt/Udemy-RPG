@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaerController : MonoBehaviour
+public class PlayerController: MonoBehaviour
 {
 	#region Fields
+
+	public static PlayerController Instance;
 
 	[SerializeField] Rigidbody2D _theRB;
 	[SerializeField] float _moveSpeed = 5f;
@@ -14,9 +16,21 @@ public class PlaerController : MonoBehaviour
 
 	#region MonoBehaviour Methods
 
+	void Awake()
+	{
+		if (Instance == null)
+		{
+			Instance = this;
+		}
+		else
+			Destroy(gameObject);
+
+		DontDestroyOnLoad(gameObject);
+	}
+
 	void Start() 
 	{
-		DontDestroyOnLoad(gameObject);
+		
 	}
 	
 	void Update() 
