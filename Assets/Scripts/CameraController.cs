@@ -27,6 +27,9 @@ public class CameraController : MonoBehaviour
 
 		_bottomLeftLimit = _theMap.localBounds.min + new Vector3(_halfWidth, _halfHeight, 0f);
 		_topRightLimit = _theMap.localBounds.max + new Vector3(-_halfWidth, -_halfHeight, 0f);
+
+		//send map boundaries to the PlayerController for limiting Player movement
+		PlayerController.Instance.SetBounds(_theMap.localBounds.min, _theMap.localBounds.max);
 	}
 	
 	void LateUpdate() 

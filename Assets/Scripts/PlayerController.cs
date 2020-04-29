@@ -13,6 +13,8 @@ public class PlayerController: MonoBehaviour
 	[SerializeField] Animator _theAnim;
 	public string _areaTransitionName;
 
+	Vector3 _bottomLeftLimit, _topRightLimit;
+
 	#endregion
 
 	#region MonoBehaviour Methods
@@ -46,12 +48,19 @@ public class PlayerController: MonoBehaviour
 			_theAnim.SetFloat("lastMoveX", Input.GetAxisRaw("Horizontal"));
 			_theAnim.SetFloat("lastMoveY", Input.GetAxisRaw("Vertical"));
 		}
+
+		//keep the player inside the bounds of the map
+		transform.position = new Vector3(Mathf.Clamp(transform.position.x, _bottomLeftLimit.x, _topRightLimit.x), Mathf.Clamp(transform.position.y, _bottomLeftLimit.y, _topRightLimit.y), transform.position.z);
 	}
 	#endregion
 
 	#region Public Methods
 
-
+	public void SetBounds(Vector3 botleft, Vector3 topRight)
+	{
+		_bottomLeftLimit = botleft + new Vector3(0.5f, 0.7f, 0f);
+		_topRightLimit = topRight + new Vector3(-0.5f, -0.7f, 0f);
+	}
 	#endregion
 
 	#region Private Methods
