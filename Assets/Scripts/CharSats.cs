@@ -41,13 +41,23 @@ public class CharSats : MonoBehaviour
 	
 	void Update() 
 	{
-		
+		if (Input.GetKeyDown(KeyCode.K))
+			AddExp(500);
 	}
 	#endregion
 
 	#region Public Methods
 
+	public void AddExp(int amount)
+	{
+		_currentEXP += amount;
 
+		if(_currentEXP > _expToNextLevel[_charLevel])
+		{
+			_currentEXP -= _expToNextLevel[_charLevel];
+			_charLevel++;
+		}
+	}
 	#endregion
 
 	#region Private Methods

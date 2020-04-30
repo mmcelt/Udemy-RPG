@@ -4686,7 +4686,11 @@ MonoBehaviour:
   _charImage: {fileID: 7152930139536384079, guid: 74224087805f0674ba64843071da1ab7,
     type: 3}
   _charLevel: 1
-  _currentEXP: 0
+  _currentEXP: 250
+  _expToNextLevel: 
+  _maxLevel: 100
+  _baseEXP: 1000
+  _expToNextLvlMultiplier: 1.03
   _currenHP: 0
   _maxHP: 100
   _currentMP: 0
