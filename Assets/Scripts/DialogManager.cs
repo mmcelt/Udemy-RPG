@@ -66,7 +66,7 @@ public class DialogManager : MonoBehaviour
 
 	#region Public Methods
 
-	public void ShowDialog(string[] newLines)
+	public void ShowDialog(string[] newLines, bool isPerson)
 	{
 		_dialogLines = newLines;
 		_currentLine = 0;
@@ -75,6 +75,10 @@ public class DialogManager : MonoBehaviour
 
 		_dialogText.text = _dialogLines[_currentLine];
 		_dialogBox.SetActive(true);
+
+		if(!isPerson)
+			_nameBox.SetActive(false);
+
 		_justStarted = true;
 		PlayerController.Instance._canMove = false;
 	}

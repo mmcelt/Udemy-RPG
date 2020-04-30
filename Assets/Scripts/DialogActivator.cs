@@ -6,6 +6,7 @@ public class DialogActivator : MonoBehaviour
 {
 	#region Fields
 
+	[SerializeField] bool _isPerson = true;
 	public string[] _lines;
 
 	bool _canActivate;
@@ -23,7 +24,7 @@ public class DialogActivator : MonoBehaviour
 	{
 		if (_canActivate && Input.GetButtonDown("Fire1") && !DialogManager.Instance._dialogBox.activeSelf)
 		{
-			DialogManager.Instance.ShowDialog(_lines);
+			DialogManager.Instance.ShowDialog(_lines, _isPerson);
 		}
 	}
 
