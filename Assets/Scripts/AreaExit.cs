@@ -13,7 +13,6 @@ public class AreaExit : MonoBehaviour
 	[SerializeField] float _waitToLoad = 1f;
 
 	bool _shouldLoadAfterFade;
-	//float _waitToLoadCounter;
 
 	#endregion
 
@@ -26,7 +25,7 @@ public class AreaExit : MonoBehaviour
 
 	void Start() 
 	{
-		//_waitToLoadCounter = _waitToLoad;
+		
 	}
 
 	void Update()
@@ -38,7 +37,6 @@ public class AreaExit : MonoBehaviour
 		if (_waitToLoad <= 0)
 		{
 			SceneManager.LoadScene(_areaToLoad);
-			//_waitToLoadCounter = _waitToLoad;
 		}
 	}
 

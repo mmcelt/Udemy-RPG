@@ -20,8 +20,10 @@ public class UIFade : MonoBehaviour
 
 	void Awake()
 	{
-		Instance = this;
-		DontDestroyOnLoad(gameObject);
+		if( Instance == null)
+			Instance = this;
+		else if(Instance != this)
+			DontDestroyOnLoad(gameObject);
 	}
 
 	void Start() 
