@@ -23,7 +23,24 @@ public class DialogManager : MonoBehaviour
 	
 	void Update() 
 	{
-		
+		if (_dialogBox.activeSelf)
+		{
+			if (Input.GetButtonUp("Fire1"))
+			{
+				_currentLine++;
+
+				if (_currentLine >= _dialogLines.Length)
+				{
+					_dialogBox.SetActive(false);
+					//_currentLine = 0;
+				}
+				else
+				{
+					_dialogText.text = _dialogLines[_currentLine];
+				}
+
+			}
+		}
 	}
 	#endregion
 
