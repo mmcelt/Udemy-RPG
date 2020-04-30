@@ -9,20 +9,21 @@ public class CharSats : MonoBehaviour
 	[SerializeField] string _charName;
 	[SerializeField] Sprite _charImage;
 
-	[SerializeField] int _charLevel = 1;
-	[SerializeField] int _currentEXP;
-	[SerializeField] int[] _expToNextLevel;
-	[SerializeField] int _maxLevel = 100;
-	[SerializeField] int _baseEXP = 1000;
-	[SerializeField] float _expToNextLvlMultiplier = 1.03f;
-
 	[SerializeField] int _currenHP;
 	[SerializeField] int _maxHP = 100;
 	[SerializeField] int _currentMP;
 	[SerializeField] int _maxMP = 30;
+	[SerializeField] int _charLevel = 1;
+	[SerializeField] int _maxLevel = 100;
+	[SerializeField] int _currentEXP;
+	[SerializeField] int _baseEXP = 1000;
+
+	[SerializeField] float _nextLvlMultiplier = 1.03f;
+	[SerializeField] int[] _expToNextLevel;
+	[SerializeField] int[] _mpLvlBonus;
 
 	[SerializeField] int _strength;
-	[SerializeField] int _defence;
+	[SerializeField] int _defense;
 	[SerializeField] int _weaponPwr;
 	[SerializeField] int _armorPwr;
 	[SerializeField] string _equippedWpn, _equippedArm;
@@ -37,12 +38,14 @@ public class CharSats : MonoBehaviour
 		_expToNextLevel[1] = _baseEXP;
 
 		CalculateExpToNextLevels();
+		_currenHP = _maxHP;
+		_currentMP = _maxMP;
 	}
 	
 	void Update() 
 	{
 		if (Input.GetKeyDown(KeyCode.K))
-			AddExp(500);
+			AddExp(1000);
 	}
 	#endregion
 
@@ -52,11 +55,36 @@ public class CharSats : MonoBehaviour
 	{
 		_currentEXP += amount;
 
-		if(_currentEXP > _expToNextLevel[_charLevel])
+		if(_charLevel < _maxLevel)
 		{
-			_currentEXP -= _expToNextLevel[_charLevel];
-			_charLevel++;
+			if (_currentEXP > _expToNextLevel[_charLevel])
+			{
+				_currentEXP -= _expToNextLevel[_charLevel];
+				_charLevel++;
+
+				//determine whether to add to str or def based on even/odd
+				if (_charLevel % 2 == 0)   //even
+				{
+					_strength++;
+				}
+				else  //odd
+				{
+					_defense++;
+				}
+
+				//determine maxHP increase on Level up
+				_maxHP = Mathf.FloorToInt(_maxHP * _nextLvlMultiplier);
+				_currenHP = _maxHP;
+
+				//determine maxMP increase on level up
+				_maxMP += _mpLvlBonus[_charLevel];
+				_currentMP = _maxMP;
+			}
 		}
+		
+		if (_charLevel >= _maxLevel)
+			_currentEXP = 0;
+
 	}
 	#endregion
 
@@ -66,7 +94,7 @@ public class CharSats : MonoBehaviour
 	{
 		for(int i=2; i<_expToNextLevel.Length; i++)
 		{
-			_expToNextLevel[i] = Mathf.FloorToInt(_expToNextLevel[i - 1] * _expToNextLvlMultiplier);
+			_expToNextLevel[i] = Mathf.FloorToInt(_expToNextLevel[i - 1] * _nextLvlMultiplier);
 		}
 	}
 	#endregion
