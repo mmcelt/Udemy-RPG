@@ -46,7 +46,7 @@ public class DialogManager : MonoBehaviour
 					if (_currentLine >= _dialogLines.Length)
 					{
 						_dialogBox.SetActive(false);
-						//_currentLine = 0;
+						PlayerController.Instance._canMove = true;
 					}
 					else
 					{
@@ -71,6 +71,7 @@ public class DialogManager : MonoBehaviour
 		_dialogText.text = _dialogLines[_currentLine];
 		_dialogBox.SetActive(true);
 		_justStarted = true;
+		PlayerController.Instance._canMove = false;
 	}
 	#endregion
 

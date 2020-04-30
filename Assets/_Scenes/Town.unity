@@ -674,7 +674,7 @@ MonoBehaviour:
   _lines:
   - It works!
   - Or does it?
-  - ...
+  - Yes it does!!
 --- !u!61 &1470490264
 BoxCollider2D:
   m_ObjectHideFlags: 0

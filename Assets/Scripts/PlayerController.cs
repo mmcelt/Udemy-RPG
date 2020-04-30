@@ -12,6 +12,7 @@ public class PlayerController: MonoBehaviour
 	[SerializeField] float _moveSpeed = 5f;
 	[SerializeField] Animator _theAnim;
 	public string _areaTransitionName;
+	public bool _canMove = true;
 
 	Vector3 _bottomLeftLimit, _topRightLimit;
 
@@ -38,15 +39,25 @@ public class PlayerController: MonoBehaviour
 	
 	void Update() 
 	{
-		_theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * _moveSpeed;
+		if (_canMove)
+		{
+			_theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * _moveSpeed;
+		}
+		else
+		{
+			_theRB.velocity = Vector2.zero;
+		}
 
 		_theAnim.SetFloat("moveX", _theRB.velocity.x);
 		_theAnim.SetFloat("moveY", _theRB.velocity.y);
 
 		if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)
 		{
-			_theAnim.SetFloat("lastMoveX", Input.GetAxisRaw("Horizontal"));
-			_theAnim.SetFloat("lastMoveY", Input.GetAxisRaw("Vertical"));
+			if (_canMove)
+			{
+				_theAnim.SetFloat("lastMoveX", Input.GetAxisRaw("Horizontal"));
+				_theAnim.SetFloat("lastMoveY", Input.GetAxisRaw("Vertical"));
+			}
 		}
 
 		//keep the player inside the bounds of the map
