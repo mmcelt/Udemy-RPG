@@ -672,9 +672,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lines:
-  - It works!
-  - Or does it?
-  - Yes it does!!
+  - n-Pitiful Penny
+  - Please help me!
+  - n-Player
+  - Is everything ok?
+  - n-Pitiful Penny
+  - No!
+  - My family was taken by a hideous dragon!
+  - n-Player
+  - Don't worry,
+  - I'll save them...
 --- !u!61 &1470490264
 BoxCollider2D:
   m_ObjectHideFlags: 0

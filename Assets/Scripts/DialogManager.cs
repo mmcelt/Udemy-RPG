@@ -50,6 +50,8 @@ public class DialogManager : MonoBehaviour
 					}
 					else
 					{
+						CheckIfName();
+
 						_dialogText.text = _dialogLines[_currentLine];
 					}
 				}
@@ -68,6 +70,9 @@ public class DialogManager : MonoBehaviour
 	{
 		_dialogLines = newLines;
 		_currentLine = 0;
+
+		CheckIfName();	//check for a character name
+
 		_dialogText.text = _dialogLines[_currentLine];
 		_dialogBox.SetActive(true);
 		_justStarted = true;
@@ -77,6 +82,13 @@ public class DialogManager : MonoBehaviour
 
 	#region Private Methods
 
-
+	void CheckIfName()
+	{
+		if (_dialogLines[_currentLine].StartsWith("n-"))
+		{
+			_nameText.text = _dialogLines[_currentLine].Replace("n-","");
+			_currentLine++;
+		}
+	}
 	#endregion
 }
