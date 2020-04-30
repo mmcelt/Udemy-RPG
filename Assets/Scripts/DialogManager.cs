@@ -7,18 +7,30 @@ public class DialogManager : MonoBehaviour
 {
 	#region Fields
 
-	[SerializeField] GameObject _dialogBox, _nameBox;
+	public static DialogManager Instance;
+
+	public GameObject _dialogBox, _nameBox;
 	[SerializeField] Text _dialogText, _nameText;
 	[SerializeField] string[] _dialogLines;
 	[SerializeField] int _currentLine;
+
+	bool _justStarted;
 
 	#endregion
 
 	#region MonoBehaviour Methods
 
+	void Awake()
+	{
+		if (Instance == null)
+			Instance = this;
+		else if (Instance != this)
+			Destroy(gameObject);
+	}
+
 	void Start() 
 	{
-		_dialogText.text = _dialogLines[_currentLine];
+		//_dialogText.text = _dialogLines[_currentLine];
 	}
 	
 	void Update() 
@@ -27,18 +39,24 @@ public class DialogManager : MonoBehaviour
 		{
 			if (Input.GetButtonUp("Fire1"))
 			{
-				_currentLine++;
-
-				if (_currentLine >= _dialogLines.Length)
+				if (!_justStarted)
 				{
-					_dialogBox.SetActive(false);
-					//_currentLine = 0;
+					_currentLine++;
+
+					if (_currentLine >= _dialogLines.Length)
+					{
+						_dialogBox.SetActive(false);
+						//_currentLine = 0;
+					}
+					else
+					{
+						_dialogText.text = _dialogLines[_currentLine];
+					}
 				}
 				else
 				{
-					_dialogText.text = _dialogLines[_currentLine];
+					_justStarted = false;
 				}
-
 			}
 		}
 	}
@@ -46,7 +64,14 @@ public class DialogManager : MonoBehaviour
 
 	#region Public Methods
 
-
+	public void ShowDialog(string[] newLines)
+	{
+		_dialogLines = newLines;
+		_currentLine = 0;
+		_dialogText.text = _dialogLines[_currentLine];
+		_dialogBox.SetActive(true);
+		_justStarted = true;
+	}
 	#endregion
 
 	#region Private Methods
