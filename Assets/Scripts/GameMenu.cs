@@ -25,6 +25,7 @@ public class GameMenu : MonoBehaviour
 			bool isOpen = _theMenu.activeSelf;
 			isOpen = !isOpen;
 			_theMenu.SetActive(isOpen);
+			GameManager.Instance._gameMenuOpen = isOpen;
 		}
 	}
 	#endregion

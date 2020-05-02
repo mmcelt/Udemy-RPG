@@ -30,7 +30,8 @@ public class UIFade : MonoBehaviour
 
 	void Start() 
 	{
-
+		_shouldFadeFromBlack = false;
+		_shouldFadeToBlack = false;
 	}
 	
 	void Update() 
@@ -40,14 +41,18 @@ public class UIFade : MonoBehaviour
 			_fadePanel.color = new Color(_fadePanel.color.r, _fadePanel.color.g, _fadePanel.color.b, Mathf.MoveTowards(_fadePanel.color.a, 1f, _fadeSpeed * Time.deltaTime));
 
 			if (_fadePanel.color.a == 1f)
+			{
 				_shouldFadeToBlack = false;
+			}
 		}
 		if (_shouldFadeFromBlack)
 		{
 			_fadePanel.color = new Color(_fadePanel.color.r, _fadePanel.color.g, _fadePanel.color.b, Mathf.MoveTowards(_fadePanel.color.a, 0f, _fadeSpeed * Time.deltaTime));
 
 			if (_fadePanel.color.a == 1f)
+			{
 				_shouldFadeFromBlack = false;
+			}
 		}
 	}
 	#endregion

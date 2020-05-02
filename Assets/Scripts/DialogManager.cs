@@ -46,7 +46,8 @@ public class DialogManager : MonoBehaviour
 					if (_currentLine >= _dialogLines.Length)
 					{
 						_dialogBox.SetActive(false);
-						PlayerController.Instance._canMove = true;
+						//PlayerController.Instance._canMove = true;
+						GameManager.Instance._dialogActive = false;
 					}
 					else
 					{
@@ -80,7 +81,8 @@ public class DialogManager : MonoBehaviour
 			_nameBox.SetActive(false);
 
 		_justStarted = true;
-		PlayerController.Instance._canMove = false;
+		//PlayerController.Instance._canMove = false;
+		GameManager.Instance._dialogActive = true;
 	}
 	#endregion
 
