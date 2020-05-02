@@ -4414,6 +4414,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _theMenu: {fileID: 1571679211}
+  _nameTexts:
+  - {fileID: 1932435531}
+  - {fileID: 2032526810}
+  - {fileID: 1764851693}
+  _hpTexts:
+  - {fileID: 1414816365}
+  - {fileID: 2087895016}
+  - {fileID: 1302492482}
+  _mpTexts:
+  - {fileID: 1559106038}
+  - {fileID: 2076119660}
+  - {fileID: 1989320689}
+  _lvlTexts:
+  - {fileID: 782717564}
+  - {fileID: 416641789}
+  - {fileID: 1747826313}
+  _expTexts:
+  - {fileID: 1007529776}
+  - {fileID: 497354826}
+  - {fileID: 1848866892}
+  _expSliders:
+  - {fileID: 1715711352}
+  - {fileID: 1199150194}
+  - {fileID: 522102187}
+  _charImages:
+  - {fileID: 224441591}
+  - {fileID: 1102413608}
+  - {fileID: 1811428199}
+  _charStatPanels:
+  - {fileID: 1274766495}
+  - {fileID: 971601702}
+  - {fileID: 1966214117}
 --- !u!1 &7741647412054224206
 GameObject:
   m_ObjectHideFlags: 0
