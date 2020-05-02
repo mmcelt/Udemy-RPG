@@ -6,7 +6,7 @@ public class EssentialsLoader : MonoBehaviour
 {
 	#region Fields
 
-	[SerializeField] GameObject _uiScreen, _player;
+	[SerializeField] GameObject _uiScreen, _player, _gameManager;
 
 	#endregion
 
@@ -14,7 +14,11 @@ public class EssentialsLoader : MonoBehaviour
 
 	void Awake()
 	{
-		if(UIFade.Instance == null)
+	}
+
+	void Start() 
+	{
+		if (UIFade.Instance == null)
 		{
 			UIFade.Instance = Instantiate(_uiScreen).GetComponent<UIFade>();
 		}
@@ -23,13 +27,13 @@ public class EssentialsLoader : MonoBehaviour
 			PlayerController clone = Instantiate(_player).GetComponent<PlayerController>();
 			PlayerController.Instance = clone;
 		}
+		if (GameManager.Instance == null)
+		{
+			GameManager.Instance = Instantiate(_gameManager).GetComponent<GameManager>();
+		}
+
 	}
 
-	void Start() 
-	{
-		
-	}
-	
 	void Update() 
 	{
 		

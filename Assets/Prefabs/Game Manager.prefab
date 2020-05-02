@@ -1,0 +1,240 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6816193947523809865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6816193947523809864}
+  - component: {fileID: 6816193947523809867}
+  m_Layer: 0
+  m_Name: Player2 Stats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6816193947523809864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816193947523809865}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6816193948747662587}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6816193947523809867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816193947523809865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef874a38f706a824684c5d2c29c7745a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _charImage: {fileID: 21300000, guid: e0ddba6d3fcf21f49949fcc95c849aac, type: 3}
+  _charName: Chewie
+  _charLevel: 3
+  _currentEXP: 543
+  _expToNextLevel: 
+  _maxLevel: 10
+  _baseEXP: 1000
+  _currenHP: 0
+  _maxHP: 150
+  _currentMP: 0
+  _maxMP: 25
+  _nextLvlMultiplier: 1.03
+  _mpLvlBonus: 00000000000000000500000000000000050000000000000000000000050000000000000000000000050000000000000000000000050000000000000000000000000000000500000000000000000000000600000000000000000000000000000006000000000000000000000000000000060000000000000000000000060000000000000000000000000000000600000000000000000000000600000000000000000000000000000007000000000000000000000007000000000000000000000000000000070000000000000000000000000000000500000000000000000000000500000000000000000000000000000005000000000000000000000005000000000000000000000005000000000000000000000005000000000000000000000000000000050000000000000005000000000000000500000000000000000000000500000000000000000000000000000005000000000000000000000005000000000000000000000005000000000000000500000000000000050000000000000005000000000000000500000000000000
+  _strength: 22
+  _defense: 16
+  _weaponPwr: 0
+  _armorPwr: 0
+  _equippedWpn: 
+  _equippedArm: 
+--- !u!1 &6816193948747662585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6816193948747662587}
+  - component: {fileID: 6816193948747662584}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6816193948747662587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816193948747662585}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6816193949168727577}
+  - {fileID: 6816193947523809864}
+  - {fileID: 6816193948864188210}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6816193948747662584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816193948747662585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d914f6d3888666b43bb5c210a9354dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerStats:
+  - {fileID: 6816193949168727582}
+  - {fileID: 6816193947523809867}
+  - {fileID: 6816193948864188221}
+--- !u!1 &6816193948864188211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6816193948864188210}
+  - component: {fileID: 6816193948864188221}
+  m_Layer: 0
+  m_Name: Player3 Stats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6816193948864188210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816193948864188211}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6816193948747662587}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6816193948864188221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816193948864188211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef874a38f706a824684c5d2c29c7745a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _charImage: {fileID: -7777177641172106769, guid: 332f33b5a664c9647a8cf391b1075e8e,
+    type: 3}
+  _charName: Din Dor
+  _charLevel: 3
+  _currentEXP: 543
+  _expToNextLevel: 
+  _maxLevel: 10
+  _baseEXP: 1000
+  _currenHP: 0
+  _maxHP: 150
+  _currentMP: 0
+  _maxMP: 25
+  _nextLvlMultiplier: 1.03
+  _mpLvlBonus: 00000000000000000500000000000000050000000000000000000000050000000000000000000000050000000000000000000000050000000000000000000000000000000500000000000000000000000600000000000000000000000000000006000000000000000000000000000000060000000000000000000000060000000000000000000000000000000600000000000000000000000600000000000000000000000000000007000000000000000000000007000000000000000000000000000000070000000000000000000000000000000500000000000000000000000500000000000000000000000000000005000000000000000000000005000000000000000000000005000000000000000000000005000000000000000000000000000000050000000000000005000000000000000500000000000000000000000500000000000000000000000000000005000000000000000000000005000000000000000000000005000000000000000500000000000000050000000000000005000000000000000500000000000000
+  _strength: 22
+  _defense: 16
+  _weaponPwr: 0
+  _armorPwr: 0
+  _equippedWpn: 
+  _equippedArm: 
+--- !u!1 &6816193949168727583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6816193949168727577}
+  - component: {fileID: 6816193949168727582}
+  m_Layer: 0
+  m_Name: Player1 Stats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6816193949168727577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816193949168727583}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6816193948747662587}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6816193949168727582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816193949168727583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef874a38f706a824684c5d2c29c7745a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _charImage: {fileID: 7152930139536384079, guid: 74224087805f0674ba64843071da1ab7,
+    type: 3}
+  _charName: Rinky
+  _charLevel: 1
+  _currentEXP: 250
+  _expToNextLevel: 
+  _maxLevel: 10
+  _baseEXP: 1000
+  _currenHP: 0
+  _maxHP: 100
+  _currentMP: 0
+  _maxMP: 30
+  _nextLvlMultiplier: 1.03
+  _mpLvlBonus: 00000000000000000500000000000000050000000000000000000000050000000000000000000000050000000000000000000000050000000000000000000000000000000500000000000000000000000600000000000000000000000000000006000000000000000000000000000000060000000000000000000000060000000000000000000000000000000600000000000000000000000600000000000000000000000000000007000000000000000000000007000000000000000000000000000000070000000000000000000000000000000500000000000000000000000500000000000000000000000000000005000000000000000000000005000000000000000000000005000000000000000000000005000000000000000000000000000000050000000000000005000000000000000500000000000000000000000500000000000000000000000000000005000000000000000000000005000000000000000000000005000000000000000500000000000000050000000000000005000000000000000500000000000000
+  _strength: 15
+  _defense: 12
+  _weaponPwr: 0
+  _armorPwr: 0
+  _equippedWpn: 
+  _equippedArm: 

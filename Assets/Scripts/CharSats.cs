@@ -6,20 +6,20 @@ public class CharSats : MonoBehaviour
 {
 	#region Fields
 
-	[SerializeField] string _charName;
 	[SerializeField] Sprite _charImage;
-
+	[SerializeField] string _charName;
+	[SerializeField] int _charLevel = 1;
+	[SerializeField] int _currentEXP;
+	[SerializeField] int[] _expToNextLevel;
+	[SerializeField] int _maxLevel = 100;
+	[SerializeField] int _baseEXP = 1000;
 	[SerializeField] int _currenHP;
 	[SerializeField] int _maxHP = 100;
 	[SerializeField] int _currentMP;
 	[SerializeField] int _maxMP = 30;
-	[SerializeField] int _charLevel = 1;
-	[SerializeField] int _maxLevel = 100;
-	[SerializeField] int _currentEXP;
-	[SerializeField] int _baseEXP = 1000;
 
 	[SerializeField] float _nextLvlMultiplier = 1.03f;
-	[SerializeField] int[] _expToNextLevel;
+
 	[SerializeField] int[] _mpLvlBonus;
 
 	[SerializeField] int _strength;

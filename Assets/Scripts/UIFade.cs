@@ -23,7 +23,9 @@ public class UIFade : MonoBehaviour
 		if( Instance == null)
 			Instance = this;
 		else if(Instance != this)
-			DontDestroyOnLoad(gameObject);
+			Destroy(gameObject);
+
+		DontDestroyOnLoad(gameObject);
 	}
 
 	void Start() 
