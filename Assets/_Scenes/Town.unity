@@ -1069,6 +1069,19 @@ MonoBehaviour:
   _dialogLines:
   - Welcome to Town
   _currentLine: 0
+--- !u!114 &617655205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617655203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42be1c6e74f9be24ea4798399e8b1bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _theMenu: {fileID: 1571679211}
 --- !u!1 &698579873
 GameObject:
   m_ObjectHideFlags: 0
