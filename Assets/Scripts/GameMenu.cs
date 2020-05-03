@@ -8,11 +8,16 @@ public class GameMenu : MonoBehaviour
 	#region Fields
 
 	[SerializeField] GameObject _theMenu;
+	[Header("Character Status Panel")]
+	[SerializeField] GameObject[] _charStatPanels;
 	[SerializeField] Text[] _nameTexts, _hpTexts, _mpTexts, _lvlTexts, _expTexts;
 	[SerializeField] Slider[] _expSliders;
 	[SerializeField] Image[] _charImages;
-	[SerializeField] GameObject[] _charStatPanels, _windows;
+	[SerializeField] GameObject[] _windows;
+	[Header("Player Status Panels")]
 	[SerializeField] GameObject[] _statusButtons;
+	[SerializeField] Image _playerImage;
+	[SerializeField] Text _nameText, _hpText, _mpText, _strText, _defText, _wpnText, _wpnPwrText, _armText, _armPwrText, _expText;
 
 	CharSats[] _playerStats;
 
@@ -22,7 +27,7 @@ public class GameMenu : MonoBehaviour
 
 	void Start() 
 	{
-		
+		//UpdateMainStats();
 	}
 	
 	void Update() 
@@ -110,7 +115,30 @@ public class GameMenu : MonoBehaviour
 		}
 
 		//update the player data...
+		UpdateCharStatus(0);
+	}
 
+	public void UpdateCharStatus(int selectedChar)
+	{
+		UpdateMainStats();
+
+		_playerImage.sprite = _playerStats[selectedChar]._charImage;
+		_nameText.text = _playerStats[selectedChar]._charName;
+		_hpText.text = _playerStats[selectedChar]._currentHP + "/" + _playerStats[selectedChar]._maxHP;
+		_mpText.text = _playerStats[selectedChar]._currentMP + "/" + _playerStats[selectedChar]._maxMP;
+		_strText.text = _playerStats[selectedChar]._strength.ToString();
+		_defText.text = _playerStats[selectedChar]._defense.ToString();
+
+		if (_playerStats[selectedChar]._equippedWpn != "")
+			_wpnText.text = _playerStats[selectedChar]._equippedWpn;
+
+		_wpnPwrText.text = _playerStats[selectedChar]._weaponPwr.ToString();
+
+		if (_playerStats[selectedChar]._equippedArm != "")
+			_armText.text = _playerStats[selectedChar]._equippedArm;
+
+		_armPwrText.text = _playerStats[selectedChar]._armorPwr.ToString();
+		_expText.text = (_playerStats[selectedChar]._expToNextLevel[_playerStats[selectedChar]._charLevel] - _playerStats[selectedChar]._currentEXP).ToString();
 	}
 	#endregion
 
