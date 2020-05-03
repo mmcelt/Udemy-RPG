@@ -6,27 +6,27 @@ public class CharSats : MonoBehaviour
 {
 	#region Fields
 
-	[SerializeField] Sprite _charImage;
-	[SerializeField] string _charName;
-	[SerializeField] int _charLevel = 1;
-	[SerializeField] int _currentEXP;
-	[SerializeField] int[] _expToNextLevel;
-	[SerializeField] int _maxLevel = 100;
-	[SerializeField] int _baseEXP = 1000;
-	[SerializeField] int _currenHP;
-	[SerializeField] int _maxHP = 100;
-	[SerializeField] int _currentMP;
-	[SerializeField] int _maxMP = 30;
+	public Sprite _charImage;
+	public string _charName;
+	public int _charLevel = 1;
+	public int _currentEXP;
+	public int[] _expToNextLevel;
+	public int _maxLevel = 100;
+	public int _baseEXP = 1000;
+	public int _currentHP;
+	public int _maxHP = 100;
+	public int _currentMP;
+	public int _maxMP = 30;
 
-	[SerializeField] float _nextLvlMultiplier = 1.03f;
+	public float _nextLvlMultiplier = 1.03f;
 
-	[SerializeField] int[] _mpLvlBonus;
+	public int[] _mpLvlBonus;
 
-	[SerializeField] int _strength;
-	[SerializeField] int _defense;
-	[SerializeField] int _weaponPwr;
-	[SerializeField] int _armorPwr;
-	[SerializeField] string _equippedWpn, _equippedArm;
+	public int _strength;
+	public int _defense;
+	public int _weaponPwr;
+	public int _armorPwr;
+	public string _equippedWpn, _equippedArm;
 
 	#endregion
 
@@ -38,7 +38,7 @@ public class CharSats : MonoBehaviour
 		_expToNextLevel[1] = _baseEXP;
 
 		CalculateExpToNextLevels();
-		_currenHP = _maxHP;
+		_currentHP = _maxHP;
 		_currentMP = _maxMP;
 	}
 	
@@ -74,7 +74,7 @@ public class CharSats : MonoBehaviour
 
 				//determine maxHP increase on Level up
 				_maxHP = Mathf.FloorToInt(_maxHP * _nextLvlMultiplier);
-				_currenHP = _maxHP;
+				_currentHP = _maxHP;
 
 				//determine maxMP increase on level up
 				_maxMP += _mpLvlBonus[_charLevel];
