@@ -11,7 +11,7 @@ public class GameMenu : MonoBehaviour
 	[SerializeField] Text[] _nameTexts, _hpTexts, _mpTexts, _lvlTexts, _expTexts;
 	[SerializeField] Slider[] _expSliders;
 	[SerializeField] Image[] _charImages;
-	[SerializeField] GameObject[] _charStatPanels;
+	[SerializeField] GameObject[] _charStatPanels, _windows;
 
 	CharSats[] _playerStats;
 
@@ -28,14 +28,18 @@ public class GameMenu : MonoBehaviour
 	{
 		if (Input.GetButtonDown("Fire2"))
 		{
-			//toggle the menu panel...
-			bool isOpen = _theMenu.activeSelf;
-			isOpen = !isOpen;
-			_theMenu.SetActive(isOpen);
-			GameManager.Instance._gameMenuOpen = isOpen;
-
-			if (isOpen)
+			if (_theMenu.activeSelf)
+			{
+				//_theMenu.SetActive(false);
+				//GameManager.Instance._gameMenuOpen = false;
+				CloseMenu();
+			}
+			else
+			{
+				_theMenu.SetActive(true);
 				UpdateMainStats();
+				GameManager.Instance._gameMenuOpen = true;
+			}
 		}
 	}
 	#endregion
@@ -66,6 +70,30 @@ public class GameMenu : MonoBehaviour
 				_charStatPanels[i].SetActive(false);
 			}
 		}
+	}
+
+	public void ToggleWindow(int windowIndex)
+	{
+		for(int i=0; i<_windows.Length; i++)
+		{
+			if (i == windowIndex)
+			{
+				_windows[i].SetActive(!_windows[i].activeSelf);
+			}
+			else
+			{
+				_windows[i].SetActive(false);
+			}
+		}
+	}
+
+	public void CloseMenu()
+	{
+		foreach (GameObject window in _windows)
+			window.SetActive(false);
+
+		_theMenu.SetActive(false);
+		GameManager.Instance._gameMenuOpen = false;
 	}
 	#endregion
 
