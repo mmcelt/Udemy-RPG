@@ -12,6 +12,7 @@ public class GameMenu : MonoBehaviour
 	[SerializeField] Slider[] _expSliders;
 	[SerializeField] Image[] _charImages;
 	[SerializeField] GameObject[] _charStatPanels, _windows;
+	[SerializeField] GameObject[] _statusButtons;
 
 	CharSats[] _playerStats;
 
@@ -74,6 +75,8 @@ public class GameMenu : MonoBehaviour
 
 	public void ToggleWindow(int windowIndex)
 	{
+		UpdateMainStats();
+
 		for(int i=0; i<_windows.Length; i++)
 		{
 			if (i == windowIndex)
@@ -94,6 +97,20 @@ public class GameMenu : MonoBehaviour
 
 		_theMenu.SetActive(false);
 		GameManager.Instance._gameMenuOpen = false;
+	}
+
+	public void OpenStatus()
+	{
+		UpdateMainStats();
+
+		for(int i=0; i<_statusButtons.Length; i++)
+		{
+			_statusButtons[i].SetActive(_playerStats[i].gameObject.activeSelf);
+			_statusButtons[i].GetComponentInChildren<Text>().text = _playerStats[i]._charName;
+		}
+
+		//update the player data...
+
 	}
 	#endregion
 

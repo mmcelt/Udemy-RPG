@@ -1946,8 +1946,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 861000401}
-        m_MethodName: ToggleWindow
-        m_Mode: 3
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2076,8 +2076,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 861000401}
-        m_MethodName: ToggleWindow
-        m_Mode: 3
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -18597,8 +18597,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 861000401}
-        m_MethodName: ToggleWindow
-        m_Mode: 3
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -18889,6 +18889,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 617655205, guid: abfa7332967603d4a91a9e84c5ec18e3, type: 3}
+      propertyPath: _statusButtons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 617655205, guid: abfa7332967603d4a91a9e84c5ec18e3, type: 3}
+      propertyPath: _statusButtons.Array.data[0]
+      value: 
+      objectReference: {fileID: 1354334745}
+    - target: {fileID: 617655205, guid: abfa7332967603d4a91a9e84c5ec18e3, type: 3}
+      propertyPath: _statusButtons.Array.data[1]
+      value: 
+      objectReference: {fileID: 2046486036}
+    - target: {fileID: 617655205, guid: abfa7332967603d4a91a9e84c5ec18e3, type: 3}
+      propertyPath: _statusButtons.Array.data[2]
+      value: 
+      objectReference: {fileID: 1299204525}
     - target: {fileID: 971509562, guid: abfa7332967603d4a91a9e84c5ec18e3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -18968,6 +18984,30 @@ PrefabInstance:
     - target: {fileID: 1547149088, guid: abfa7332967603d4a91a9e84c5ec18e3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547149089, guid: abfa7332967603d4a91a9e84c5ec18e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547149089, guid: abfa7332967603d4a91a9e84c5ec18e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547149089, guid: abfa7332967603d4a91a9e84c5ec18e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547149089, guid: abfa7332967603d4a91a9e84c5ec18e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 861000401}
+    - target: {fileID: 1547149089, guid: abfa7332967603d4a91a9e84c5ec18e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OpenStatus
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547149089, guid: abfa7332967603d4a91a9e84c5ec18e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1621314658, guid: abfa7332967603d4a91a9e84c5ec18e3, type: 3}
       propertyPath: m_AnchorMin.y
