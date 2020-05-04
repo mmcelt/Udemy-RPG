@@ -28,7 +28,13 @@ public class ItemButtton : MonoBehaviour
 
 	#region Public Methods
 
-
+	public void OnItemButtonClicked()
+	{
+		if(GameManager.Instance._itemsHeld[_buttonValue] != "")
+		{
+			GameMenu.Instance.SelectItem(GameManager.Instance.GetItemDetails(GameManager.Instance._itemsHeld[_buttonValue]));
+		}
+	}
 	#endregion
 
 	#region Private Methods

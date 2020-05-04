@@ -7,6 +7,8 @@ public class GameMenu : MonoBehaviour
 {
 	#region Fields
 
+	public static GameMenu Instance;
+
 	[SerializeField] GameObject _theMenu;
 	[Header("Character Status Panel")]
 	[SerializeField] GameObject[] _charStatPanels;
@@ -19,12 +21,23 @@ public class GameMenu : MonoBehaviour
 	[SerializeField] Image _playerImage;
 	[SerializeField] Text _nameText, _hpText, _mpText, _strText, _defText, _wpnText, _wpnPwrText, _armText, _armPwrText, _expText;
 	[SerializeField] ItemButtton[] _itemButtons;
+	public string _selectedItem;
+	public Item _activeItem;
+	[SerializeField] Text _itemName, _itemDescription, _useButtonText;
 
 	CharSats[] _playerStats;
 
 	#endregion
 
 	#region MonoBehaviour Methods
+
+	void Awake()
+	{
+		if (Instance == null)
+			Instance = this;
+		else if (Instance != this)
+			Destroy(gameObject);
+	}
 
 	void Start() 
 	{
@@ -162,6 +175,33 @@ public class GameMenu : MonoBehaviour
 				_itemButtons[i]._amountText.text = "";
 			}
 		}
+	}
+
+	public void SelectItem(Item theItem)
+	{
+		_activeItem = theItem;
+
+		_itemName.text = _activeItem._itemName;
+		_itemDescription.text = _activeItem._itemDesc;
+
+		if (_activeItem._isItem)
+		{
+			_useButtonText.text = "Use";
+		}
+		if(_activeItem._isArmor || _activeItem._isWeapon)
+		{
+			_useButtonText.text = "Equip";
+		}
+	}
+
+	public void OnUseButtonClicked()
+	{
+
+	}
+
+	public void OnDropButtonClicked()
+	{
+
 	}
 	#endregion
 
