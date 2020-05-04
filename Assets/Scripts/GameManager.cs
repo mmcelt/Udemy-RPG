@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
 			}
 		}
 
+		Debug.LogError("Can't Find: " + itemToFind);
 		return null;
 	}
 	#endregion

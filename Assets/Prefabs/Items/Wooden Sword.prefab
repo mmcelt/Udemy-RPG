@@ -100,7 +100,7 @@ MonoBehaviour:
   _isArmor: 0
   _itemSprite: {fileID: -2178467043915682464, guid: 0bc4ed27aef38a44bb72e80f9beb5326,
     type: 3}
-  _itemName: Wodden Sword
+  _itemName: Wooden Sword
   _itemDesc: Very basic Sword
   _itemValue: 10
   _amountToChange: 0

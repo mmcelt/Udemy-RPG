@@ -18,6 +18,7 @@ public class GameMenu : MonoBehaviour
 	[SerializeField] GameObject[] _statusButtons;
 	[SerializeField] Image _playerImage;
 	[SerializeField] Text _nameText, _hpText, _mpText, _strText, _defText, _wpnText, _wpnPwrText, _armText, _armPwrText, _expText;
+	[SerializeField] ItemButtton[] _itemButtons;
 
 	CharSats[] _playerStats;
 
@@ -139,6 +140,26 @@ public class GameMenu : MonoBehaviour
 
 		_armPwrText.text = _playerStats[selectedChar]._armorPwr.ToString();
 		_expText.text = (_playerStats[selectedChar]._expToNextLevel[_playerStats[selectedChar]._charLevel] - _playerStats[selectedChar]._currentEXP).ToString();
+	}
+
+	public void ShowItems()
+	{
+		for(int i=0; i<_itemButtons.Length; i++)
+		{
+			_itemButtons[i]._buttonValue = i;
+
+			if(GameManager.Instance._itemsHeld[i] != "")
+			{
+				_itemButtons[i]._buttonImage.gameObject.SetActive(true);
+				_itemButtons[i]._buttonImage.sprite = GameManager.Instance.GetItemDetails(GameManager.Instance._itemsHeld[i])._itemSprite;
+				_itemButtons[i]._amountText.text = GameManager.Instance._numberHeldOfItem[i].ToString();
+			}
+			else
+			{
+				_itemButtons[i]._buttonImage.gameObject.SetActive(false);
+				_itemButtons[i]._amountText.text = "";
+			}
+		}
 	}
 	#endregion
 
