@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
 
 	public CharSats[] _playerStats;
 	public bool _gameMenuOpen, _dialogActive, _fadingBetweenAreas;
+	public string[] _itemsHeld;
+	public int[] _numberHeldOfItem;
+	public Item[] _referenceItems;
 
 	#endregion
 
@@ -45,7 +48,18 @@ public class GameManager : MonoBehaviour
 
 	#region Public Methods
 
+	public Item GetItemDetails(string itemToFind)
+	{
+		for(int i=0; i<_referenceItems.Length; i++)
+		{
+			if (_referenceItems[i]._itemName == itemToFind)
+			{
+				return _referenceItems[i];
+			}
+		}
 
+		return null;
+	}
 	#endregion
 
 	#region Private Methods
