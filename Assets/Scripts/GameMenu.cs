@@ -201,7 +201,8 @@ public class GameMenu : MonoBehaviour
 
 	public void OnDropButtonClicked()
 	{
-
+		if(_activeItem != null)
+			GameManager.Instance.RemoveItem(_activeItem._itemName);
 	}
 	#endregion
 

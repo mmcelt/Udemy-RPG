@@ -43,6 +43,15 @@ public class GameManager : MonoBehaviour
 		{
 			PlayerController.Instance._canMove = true;
 		}
+
+		if (Input.GetKeyDown(KeyCode.J))
+		{
+			AddItem("Iron Armor");
+			AddItem("Pooper Scooper");
+
+			RemoveItem("Health Potion");
+			RemoveItem("Crapola");
+		}
 	}
 	#endregion
 
@@ -86,6 +95,79 @@ public class GameManager : MonoBehaviour
 				}
 			}
 		}
+	}
+
+	public void AddItem(string itemToAdd)
+	{
+		int newItemPosition = 0;
+		bool foundSpace = false;
+
+		for(int i=0; i<_itemsHeld.Length; i++)
+		{
+			if(_itemsHeld[i]=="" || _itemsHeld[i] == itemToAdd)
+			{
+				newItemPosition = i;
+				foundSpace = true;
+				break;
+			}
+		}
+
+		if (foundSpace)
+		{
+			bool itemExists = false;
+			foreach(Item item in _referenceItems)
+			{
+				if (item._itemName == itemToAdd)
+				{
+					itemExists = true;
+					break;
+				}
+			}
+
+			if (itemExists)
+			{
+				_itemsHeld[newItemPosition] = itemToAdd;
+				_numberHeldOfItem[newItemPosition]++;
+			}
+			else
+			{
+				Debug.LogError(itemToAdd + " New Item Not Valid!" );
+			}
+		}
+
+		GameMenu.Instance.ShowItems();
+	}
+
+	public void RemoveItem(string itemToRemove)
+	{
+		bool foundItem = false;
+		int itemPosition = 0;
+
+		for(int i=0; i<_itemsHeld.Length; i++)
+		{
+			if (_itemsHeld[i] == itemToRemove)
+			{
+				foundItem = true;
+				itemPosition = i;
+				break;
+			}
+		}
+
+		if (foundItem)
+		{
+			_numberHeldOfItem[itemPosition]--;
+			if (_numberHeldOfItem[itemPosition] <= 0)
+			{
+				_numberHeldOfItem[itemPosition] = 0;
+				_itemsHeld[itemPosition] = "";
+			}
+		}
+		else
+		{
+			Debug.LogError(itemToRemove + " Item to Remove NOT FOUND!");
+		}
+
+		GameMenu.Instance.ShowItems();
 	}
 	#endregion
 
