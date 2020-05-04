@@ -61,6 +61,32 @@ public class GameManager : MonoBehaviour
 		Debug.LogError("Can't Find: " + itemToFind);
 		return null;
 	}
+
+	public void SortItems()
+	{
+		bool itemAfterSpace = true;
+		while (itemAfterSpace)
+		{
+			itemAfterSpace = false;
+
+			for (int i = 0; i < _itemsHeld.Length - 1; i++)
+			{
+				if (_itemsHeld[i] == "")
+				{
+					_itemsHeld[i] = _itemsHeld[i + 1];
+					_itemsHeld[i + 1] = "";
+
+					_numberHeldOfItem[i] = _numberHeldOfItem[i + 1];
+					_numberHeldOfItem[i + 1] = 0;
+
+					if(_itemsHeld[i] != "")
+					{
+						itemAfterSpace = true;
+					}
+				}
+			}
+		}
+	}
 	#endregion
 
 	#region Private Methods

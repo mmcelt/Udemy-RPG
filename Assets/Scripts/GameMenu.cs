@@ -144,6 +144,8 @@ public class GameMenu : MonoBehaviour
 
 	public void ShowItems()
 	{
+		GameManager.Instance.SortItems();
+
 		for(int i=0; i<_itemButtons.Length; i++)
 		{
 			_itemButtons[i]._buttonValue = i;
