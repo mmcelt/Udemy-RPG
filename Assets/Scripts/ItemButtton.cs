@@ -35,6 +35,8 @@ public class ItemButtton : MonoBehaviour
 			GameMenu.Instance.SelectItem(GameManager.Instance.GetItemDetails(GameManager.Instance._itemsHeld[_buttonValue]));
 			//I ADDED THIS TO USE THE _SELECTEDiTEM FIELD IN GAMEMENU...
 			//GameMenu.Instance._selectedItem = GameManager.Instance._itemsHeld[_buttonValue];
+			GameMenu.Instance._useButton.interactable = true;
+			GameMenu.Instance._dropButton.interactable = true;
 		}
 	}
 	#endregion

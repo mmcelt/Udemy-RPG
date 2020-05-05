@@ -23,6 +23,7 @@ public class GameMenu : MonoBehaviour
 	[SerializeField] ItemButtton[] _itemButtons;
 	public string _selectedItem;
 	public Item _activeItem;
+	public Button _useButton, _dropButton;
 	[SerializeField] Text _itemName, _itemDescription, _useButtonText;
 	[SerializeField] GameObject _selectCharacterPamel;
 	[SerializeField] Text[] _selectCharacterButtonTexts;
@@ -149,11 +150,15 @@ public class GameMenu : MonoBehaviour
 
 		if (_playerStats[selectedChar]._equippedWpn != "")
 			_wpnText.text = _playerStats[selectedChar]._equippedWpn;
+		else
+			_wpnText.text = "None";
 
 		_wpnPwrText.text = _playerStats[selectedChar]._weaponPwr.ToString();
 
 		if (_playerStats[selectedChar]._equippedArm != "")
 			_armText.text = _playerStats[selectedChar]._equippedArm;
+		else
+			_armText.text = "None";
 
 		_armPwrText.text = _playerStats[selectedChar]._armorPwr.ToString();
 		_expText.text = (_playerStats[selectedChar]._expToNextLevel[_playerStats[selectedChar]._charLevel] - _playerStats[selectedChar]._currentEXP).ToString();
@@ -198,9 +203,10 @@ public class GameMenu : MonoBehaviour
 		}
 	}
 
-	public void OnUseButtonClicked()
+	public void UseItem(int selectedChar)
 	{
-
+		_activeItem.Use(selectedChar);
+		CloseItemCharacterChoice();
 	}
 
 	public void OnDropButtonClicked()
@@ -211,6 +217,8 @@ public class GameMenu : MonoBehaviour
 
 	public void OpenItemCharacterChoice()
 	{
+		if (_activeItem == null) return;
+
 		_selectCharacterPamel.SetActive(true);
 
 		for (int i = 0; i < _selectCharacterButtonTexts.Length; i++)
@@ -219,13 +227,15 @@ public class GameMenu : MonoBehaviour
 			_selectCharacterButtonTexts[i].transform.parent.gameObject.SetActive(GameManager.Instance._playerStats[i].gameObject.activeSelf);
 		}
 	}
+
+	public void CloseItemCharacterChoice()
+	{
+		_selectCharacterPamel.SetActive(false);
+	}
 	#endregion
 
 	#region Private Methods
 
-	void CloseItemCharacterChoice()
-	{
-		_selectCharacterPamel.SetActive(false);
-	}
+
 	#endregion
 }

@@ -104,9 +104,9 @@ MonoBehaviour:
   _itemDesc: Restores 50 HP
   _itemValue: 5
   _amountToChange: 50
-  _affectHp: 1
+  _affectHP: 1
   _affectMP: 0
-  _affectStr: 0
-  _affectDef: 0
+  _affectSTR: 0
+  _affectDEF: 0
   _weaponStr: 0
-  _armorStrength: 0
+  _armorStr: 0

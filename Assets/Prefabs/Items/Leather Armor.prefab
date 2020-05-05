@@ -104,9 +104,9 @@ MonoBehaviour:
   _itemDesc: Basic Leather Armor
   _itemValue: 10
   _amountToChange: 0
-  _affectHp: 0
+  _affectHP: 0
   _affectMP: 0
-  _affectStr: 1
-  _affectDef: 0
+  _affectSTR: 0
+  _affectDEF: 0
   _weaponStr: 0
-  _armorStrength: 5
+  _armorStr: 5
