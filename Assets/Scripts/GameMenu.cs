@@ -24,6 +24,8 @@ public class GameMenu : MonoBehaviour
 	public string _selectedItem;
 	public Item _activeItem;
 	[SerializeField] Text _itemName, _itemDescription, _useButtonText;
+	[SerializeField] GameObject _selectCharacterPamel;
+	[SerializeField] Text[] _selectCharacterButtonTexts;
 
 	CharSats[] _playerStats;
 
@@ -107,6 +109,7 @@ public class GameMenu : MonoBehaviour
 				_windows[i].SetActive(false);
 			}
 		}
+		_selectCharacterPamel.SetActive(false);
 	}
 
 	public void CloseMenu()
@@ -116,6 +119,7 @@ public class GameMenu : MonoBehaviour
 
 		_theMenu.SetActive(false);
 		GameManager.Instance._gameMenuOpen = false;
+		_selectCharacterPamel.SetActive(false);
 	}
 
 	public void OpenStatus()
@@ -204,10 +208,24 @@ public class GameMenu : MonoBehaviour
 		if(_activeItem != null)
 			GameManager.Instance.RemoveItem(_activeItem._itemName);
 	}
+
+	public void OpenItemCharacterChoice()
+	{
+		_selectCharacterPamel.SetActive(true);
+
+		for (int i = 0; i < _selectCharacterButtonTexts.Length; i++)
+		{
+			_selectCharacterButtonTexts[i].text = GameManager.Instance._playerStats[i]._charName;
+			_selectCharacterButtonTexts[i].transform.parent.gameObject.SetActive(GameManager.Instance._playerStats[i].gameObject.activeSelf);
+		}
+	}
 	#endregion
 
 	#region Private Methods
 
-
+	void CloseItemCharacterChoice()
+	{
+		_selectCharacterPamel.SetActive(false);
+	}
 	#endregion
 }
