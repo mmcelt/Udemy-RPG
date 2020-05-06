@@ -50,7 +50,7 @@ MonoBehaviour:
   _expToNextLevel: 
   _maxLevel: 10
   _baseEXP: 1000
-  _currenHP: 0
+  _currentHP: 0
   _maxHP: 150
   _currentMP: 0
   _maxMP: 25
@@ -112,6 +112,13 @@ MonoBehaviour:
   - {fileID: 6816193949168727582}
   - {fileID: 6816193947523809867}
   - {fileID: 6816193948864188221}
+  _gameMenuOpen: 0
+  _dialogActive: 0
+  _fadingBetweenAreas: 0
+  _itemsHeld: []
+  _numberHeldOfItem: 
+  _referenceItems: []
+  _currentGold: 100
 --- !u!1 &6816193948864188211
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +170,7 @@ MonoBehaviour:
   _expToNextLevel: 
   _maxLevel: 10
   _baseEXP: 1000
-  _currenHP: 0
+  _currentHP: 0
   _maxHP: 150
   _currentMP: 0
   _maxMP: 25
@@ -226,7 +233,7 @@ MonoBehaviour:
   _expToNextLevel: 
   _maxLevel: 10
   _baseEXP: 1000
-  _currenHP: 0
+  _currentHP: 0
   _maxHP: 100
   _currentMP: 0
   _maxMP: 30

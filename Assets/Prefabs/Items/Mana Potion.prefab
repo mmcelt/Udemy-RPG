@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6853245138619596834}
   - component: {fileID: 6853245138619596833}
+  - component: {fileID: 9121670963251743391}
   - component: {fileID: 6853245138619596832}
+  - component: {fileID: 2360491642470723851}
   m_Layer: 0
   m_Name: Mana Potion
   m_TagString: Untagged
@@ -83,6 +85,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &9121670963251743391
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6853245138619596831}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.75
 --- !u!114 &6853245138619596832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,9 +122,21 @@ MonoBehaviour:
   _itemDesc: Restores 50 MP
   _itemValue: 5
   _amountToChange: 50
-  _affectHp: 0
+  _affectHP: 0
   _affectMP: 1
-  _affectStr: 0
-  _affectDef: 0
+  _affectSTR: 0
+  _affectDEF: 0
   _weaponStr: 0
-  _armorStrength: 0
+  _armorStr: 0
+--- !u!114 &2360491642470723851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6853245138619596831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c61e3158ca9624d83c32d8d2c7dd01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

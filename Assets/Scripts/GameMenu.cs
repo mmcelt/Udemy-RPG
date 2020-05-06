@@ -27,6 +27,7 @@ public class GameMenu : MonoBehaviour
 	[SerializeField] Text _itemName, _itemDescription, _useButtonText;
 	[SerializeField] GameObject _selectCharacterPamel;
 	[SerializeField] Text[] _selectCharacterButtonTexts;
+	[SerializeField] Text _goldAmountText;
 
 	CharSats[] _playerStats;
 
@@ -93,6 +94,8 @@ public class GameMenu : MonoBehaviour
 				_charStatPanels[i].SetActive(false);
 			}
 		}
+
+		_goldAmountText.text = GameManager.Instance._currentGold + "g";
 	}
 
 	public void ToggleWindow(int windowIndex)

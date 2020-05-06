@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 	public int[] _numberHeldOfItem;
 	public Item[] _referenceItems;
 
+	public int _currentGold;
+
 	#endregion
 
 	#region MonoBehaviour Methods
@@ -30,7 +32,7 @@ public class GameManager : MonoBehaviour
 
 	void Start() 
 	{
-		
+		SortItems();
 	}
 	
 	void Update() 
