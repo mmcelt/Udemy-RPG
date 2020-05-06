@@ -6,7 +6,7 @@ public class ShopKeeper : MonoBehaviour
 {
 	#region Fields
 
-	[SerializeField] string[] _itemsForSale;
+	[SerializeField] string[] _itemsForSale = new string[40];
 
 	bool _canOpen;
 
