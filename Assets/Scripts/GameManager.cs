@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance;
 
 	public CharSats[] _playerStats;
-	public bool _gameMenuOpen, _dialogActive, _fadingBetweenAreas;
+	public bool _gameMenuOpen, _dialogActive, _fadingBetweenAreas, _shopOpen;
 	public string[] _itemsHeld;
 	public int[] _numberHeldOfItem;
 	public Item[] _referenceItems;
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 	
 	void Update() 
 	{
-		if(_gameMenuOpen || _dialogActive || _fadingBetweenAreas)
+		if(_gameMenuOpen || _dialogActive || _fadingBetweenAreas || _shopOpen)
 		{
 			PlayerController.Instance._canMove = false;
 		}
