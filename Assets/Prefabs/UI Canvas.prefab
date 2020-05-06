@@ -45614,8 +45614,6 @@ MonoBehaviour:
   - {fileID: 138528974}
   - {fileID: 889096633}
   - {fileID: 425750038}
-  _selectedItem: 
-  _activeItem: {fileID: 0}
   _useButton: {fileID: 1185314795}
   _dropButton: {fileID: 496105323}
   _itemName: {fileID: 1872423932}
@@ -45726,7 +45724,6 @@ MonoBehaviour:
   - {fileID: 7370090393817389915}
   - {fileID: 916435805213001005}
   - {fileID: 2683073188777009599}
-  _selectedItem: {fileID: 0}
   _buyItemName: {fileID: 5947717719007870037}
   _buyItemDesc: {fileID: 3072508159149326563}
   _buyItemValue: {fileID: 2561912851936562542}
@@ -47249,8 +47246,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 617655205}
-        m_MethodName: 
+      - m_Target: {fileID: 1638303415091636119}
+        m_MethodName: SellItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -48755,8 +48752,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 617655205}
-        m_MethodName: 
+      - m_Target: {fileID: 1638303415091636119}
+        m_MethodName: BuyItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
