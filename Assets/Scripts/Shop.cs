@@ -9,8 +9,9 @@ public class Shop : MonoBehaviour
 
 	public static Shop Instance;
 
-	[SerializeField] GameObject _shopMenu, _buyMenu, _sellMenu;
+	public GameObject _shopMenu, _buyMenu, _sellMenu;
 	[SerializeField] Text _goldText;
+	public string[] _itemsForSale;
 
 	#endregion
 

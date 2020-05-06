@@ -4934,9 +4934,8 @@ GameObject:
   m_Component:
   - component: {fileID: 776445084}
   - component: {fileID: 776445083}
-  - component: {fileID: 776445086}
   - component: {fileID: 776445085}
-  - component: {fileID: 776445087}
+  - component: {fileID: 776445088}
   m_Layer: 0
   m_Name: Shop Keeper
   m_TagString: Untagged
@@ -4982,7 +4981,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2073980395
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 3830475944223242837, guid: fb8cc55af4b7a034584793949fd90500,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5035,33 +5034,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4, y: 1}
   m_EdgeRadius: 0
---- !u!61 &776445086
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 776445082}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.35}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.9375}
-    newSize: {x: 0.75, y: 0.9375}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.75}
-  m_EdgeRadius: 0
---- !u!114 &776445087
+--- !u!114 &776445088
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5070,14 +5043,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 776445082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55ff13d6279fabc4dba97b55f40bf843, type: 3}
+  m_Script: {fileID: 11500000, guid: fadf45616b334524fa881435d9ccba51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPerson: 1
-  _lines:
-  - n-Shop Keeper
-  - Welcome to my humble shop.
-  - What can I interest you in today?
+  _itemsForSale:
+  - Health Potion
+  - Mana Potion
+  - 
+  - 
+  - Leather Armor
+  - Iron Armor
+  - 
+  - 
+  - Wooden Sword
+  - Iron Sword
 --- !u!1001 &1602312135
 PrefabInstance:
   m_ObjectHideFlags: 0
