@@ -14,6 +14,10 @@ public class Shop : MonoBehaviour
 	public string[] _itemsForSale;
 	[SerializeField] ItemButtton[] _buyItemButtons;
 	[SerializeField] ItemButtton[] _sellItemButtons;
+	Item _selectedItem;
+	public Text _buyItemName, _buyItemDesc, _buyItemValue;
+	public Text _sellItemName, _sellItemDesc, _sellItemValue;
+	public Button _buyButton, _sellButton;
 
 	#endregion
 
@@ -61,6 +65,8 @@ public class Shop : MonoBehaviour
 
 	public void OpenBuyMenu()
 	{
+		_buyItemButtons[0].OnItemButtonClicked();
+
 		_buyMenu.SetActive(true);
 		_sellMenu.SetActive(false);
 
@@ -89,6 +95,8 @@ public class Shop : MonoBehaviour
 
 		GameManager.Instance.SortItems();
 
+		_sellItemButtons[0].OnItemButtonClicked();
+
 		for (int i = 0; i < _sellItemButtons.Length; i++)
 		{
 			_sellItemButtons[i]._buttonValue = i;
@@ -105,6 +113,22 @@ public class Shop : MonoBehaviour
 				_sellItemButtons[i]._amountText.text = "";
 			}
 		}
+	}
+
+	public void SelectBuyItem(Item buyItem)
+	{
+		_selectedItem = buyItem;
+		_buyItemName.text = _selectedItem._itemName;
+		_buyItemDesc.text = _selectedItem._itemDesc;
+		_buyItemValue.text = "Value: " + _selectedItem._itemValue + "g";
+	}
+
+	public void SelectSellItem(Item sellItem)
+	{
+		_selectedItem = sellItem;
+		_sellItemName.text = _selectedItem._itemName;
+		_sellItemDesc.text = _selectedItem._itemDesc;
+		_sellItemValue.text = "Value: " + Mathf.RoundToInt(_selectedItem._itemValue * 0.5f) + "g";
 	}
 	#endregion
 

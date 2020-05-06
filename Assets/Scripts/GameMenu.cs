@@ -9,7 +9,7 @@ public class GameMenu : MonoBehaviour
 
 	public static GameMenu Instance;
 
-	[SerializeField] GameObject _theMenu;
+	public GameObject _theMenu;
 	[Header("Character Status Panel")]
 	[SerializeField] GameObject[] _charStatPanels;
 	[SerializeField] Text[] _nameTexts, _hpTexts, _mpTexts, _lvlTexts, _expTexts;
@@ -21,8 +21,8 @@ public class GameMenu : MonoBehaviour
 	[SerializeField] Image _playerImage;
 	[SerializeField] Text _nameText, _hpText, _mpText, _strText, _defText, _wpnText, _wpnPwrText, _armText, _armPwrText, _expText;
 	[SerializeField] ItemButtton[] _itemButtons;
-	public string _selectedItem;
-	public Item _activeItem;
+	string _selectedItem;
+	Item _activeItem;
 	public Button _useButton, _dropButton;
 	[SerializeField] Text _itemName, _itemDescription, _useButtonText;
 	[SerializeField] GameObject _selectCharacterPamel;

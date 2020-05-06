@@ -45726,6 +45726,15 @@ MonoBehaviour:
   - {fileID: 7370090393817389915}
   - {fileID: 916435805213001005}
   - {fileID: 2683073188777009599}
+  _selectedItem: {fileID: 0}
+  _buyItemName: {fileID: 5947717719007870037}
+  _buyItemDesc: {fileID: 3072508159149326563}
+  _buyItemValue: {fileID: 2561912851936562542}
+  _sellItemName: {fileID: 4721590554149063401}
+  _sellItemDesc: {fileID: 8603554729007889416}
+  _sellItemValue: {fileID: 6222946096502974573}
+  _buyButton: {fileID: 2105392769081528343}
+  _sellButton: {fileID: 1898067087369612559}
 --- !u!1 &7741647412054224206
 GameObject:
   m_ObjectHideFlags: 0
