@@ -235,6 +235,12 @@ public class GameMenu : MonoBehaviour
 	{
 		_selectCharacterPamel.SetActive(false);
 	}
+
+	public void SaveGame()
+	{
+		GameManager.Instance.SaveData();
+		QuestManager.Instance.SaveQuestData();
+	}
 	#endregion
 
 	#region Private Methods
