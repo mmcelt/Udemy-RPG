@@ -6,7 +6,7 @@ public class EssentialsLoader : MonoBehaviour
 {
 	#region Fields
 
-	[SerializeField] GameObject _uiScreen, _player, _gameManager;
+	[SerializeField] GameObject _uiScreen, _player, _gameManager, _audioManager;
 
 	#endregion
 
@@ -31,7 +31,10 @@ public class EssentialsLoader : MonoBehaviour
 		{
 			GameManager.Instance = Instantiate(_gameManager).GetComponent<GameManager>();
 		}
-
+		if (AudioManager.Instance == null)
+		{
+			AudioManager.Instance = Instantiate(_audioManager).GetComponent<AudioManager>();
+		}
 	}
 
 	void Update() 
