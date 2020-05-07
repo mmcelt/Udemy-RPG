@@ -72,6 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6816193948747662587}
   - component: {fileID: 6816193948747662584}
+  - component: {fileID: 1668781684074516173}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -166,6 +167,18 @@ MonoBehaviour:
   - {fileID: 6853245138619596832, guid: 5f3ff049c3b491d4b9fb5546796882c7, type: 3}
   - {fileID: 5723218958312533070, guid: d74f89e6256738c48a7c7c988b8a434e, type: 3}
   _currentGold: 100
+--- !u!114 &1668781684074516173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816193948747662585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14069070c704c740a29a4d026e6e182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6816193948864188211
 GameObject:
   m_ObjectHideFlags: 0
