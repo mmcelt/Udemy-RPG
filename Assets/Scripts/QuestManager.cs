@@ -36,6 +36,10 @@ public class QuestManager : MonoBehaviour
 			MarkQuestComplete("quest test");
 			MarkQuestIncomplete("fight the dragon");
 		}
+		if (Input.GetKeyDown(KeyCode.O))
+			SaveQuestData();
+		if (Input.GetKeyDown(KeyCode.P))
+			LoadQuestData();
 	}
 	#endregion
 
@@ -61,6 +65,41 @@ public class QuestManager : MonoBehaviour
 	{
 		_questMarkersComplete[GetQuestNumber(questToMark)] = false;
 		UpdateLocalQuestObjects();
+	}
+
+	public void SaveQuestData()
+	{
+		for(int i=0; i<_questMarkerNames.Length; i++)
+		{
+			if(_questMarkersComplete[i])
+			{
+				PlayerPrefs.SetInt("QuestMarker_" + _questMarkerNames[i], 1);
+			}
+			else
+			{
+				PlayerPrefs.SetInt("QuestMarker_" + _questMarkerNames[i], 0);
+			}
+		}
+	}
+
+	public void LoadQuestData()
+	{
+		for (int i = 0; i < _questMarkerNames.Length; i++)
+		{
+			int valueToSet = 0;
+			if (PlayerPrefs.HasKey("QuestMarker_" + _questMarkerNames[i]))
+			{
+				valueToSet = PlayerPrefs.GetInt("QuestMarker_" + _questMarkerNames[i]);
+			}
+			if (valueToSet == 0)
+			{
+				_questMarkersComplete[i] = false;
+			}
+			else
+			{
+				_questMarkersComplete[i] = true;
+			}
+		}
 	}
 	#endregion
 

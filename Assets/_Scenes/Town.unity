@@ -205,7 +205,7 @@ PrefabInstance:
     - target: {fileID: 1668781684074516173, guid: 226601fd7a8bb8c408b205aaeada4b73,
         type: 3}
       propertyPath: _questMarkerNames.Array.size
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1668781684074516173, guid: 226601fd7a8bb8c408b205aaeada4b73,
         type: 3}
@@ -231,6 +231,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _questMarkerNames.Array.data[4]
       value: save the world
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668781684074516173, guid: 226601fd7a8bb8c408b205aaeada4b73,
+        type: 3}
+      propertyPath: _questMarkerNames.Array.data[5]
+      value: do something
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668781684074516173, guid: 226601fd7a8bb8c408b205aaeada4b73,
+        type: 3}
+      propertyPath: _questMarkerNames.Array.data[6]
+      value: load test
       objectReference: {fileID: 0}
     - target: {fileID: 6816193948747662585, guid: 226601fd7a8bb8c408b205aaeada4b73,
         type: 3}
