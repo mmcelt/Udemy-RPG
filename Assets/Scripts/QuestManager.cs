@@ -54,11 +54,13 @@ public class QuestManager : MonoBehaviour
 	public void MarkQuestComplete(string questToMark)
 	{
 		_questMarkersComplete[GetQuestNumber(questToMark)] = true;
+		UpdateLocalQuestObjects();
 	}
 
 	public void MarkQuestIncomplete(string questToMark)
 	{
 		_questMarkersComplete[GetQuestNumber(questToMark)] = false;
+		UpdateLocalQuestObjects();
 	}
 	#endregion
 
@@ -75,6 +77,18 @@ public class QuestManager : MonoBehaviour
 		}
 		Debug.LogError("Quest: " + questToFind + " does not exist!");
 		return 0;
+	}
+
+	void UpdateLocalQuestObjects()
+	{
+		QuestObjectActivator[] questObjects = FindObjectsOfType<QuestObjectActivator>();
+		if(questObjects.Length>0)
+		{
+			foreach(QuestObjectActivator qoa in questObjects)
+			{
+				qoa.CheckCompletion();
+			}
+		}
 	}
 	#endregion
 }
