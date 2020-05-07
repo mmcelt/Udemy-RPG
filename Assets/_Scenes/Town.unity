@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &77668322
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -863,6 +863,9 @@ MonoBehaviour:
   - n-Player
   - Don't worry,
   - I'll save them...
+  _shouldActivatQuest: 1
+  _markComplete: 1
+  _questToMark: quest test
 --- !u!61 &1470490264
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7608,6 +7611,9 @@ MonoBehaviour:
   _isPerson: 0
   _lines:
   - Welcome to Town
+  _shouldActivatQuest: 0
+  _markComplete: 0
+  _questToMark: 
 --- !u!1001 &1859872352
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,6 +14,9 @@ public class DialogManager : MonoBehaviour
 	[SerializeField] string[] _dialogLines;
 	[SerializeField] int _currentLine;
 
+	string _questToMark;
+	bool _markQuestComplete, _shouldMarkQuest;
+
 	bool _justStarted;
 
 	#endregion
@@ -46,8 +49,20 @@ public class DialogManager : MonoBehaviour
 					if (_currentLine >= _dialogLines.Length)
 					{
 						_dialogBox.SetActive(false);
-						//PlayerController.Instance._canMove = true;
 						GameManager.Instance._dialogActive = false;
+
+						if (_shouldMarkQuest)
+						{
+							_shouldMarkQuest = false;
+							if (_markQuestComplete)
+							{
+								QuestManager.Instance.MarkQuestComplete(_questToMark);
+							}
+							else
+							{
+								QuestManager.Instance.MarkQuestIncomplete(_questToMark);
+							}
+						}
 					}
 					else
 					{
@@ -83,6 +98,14 @@ public class DialogManager : MonoBehaviour
 		_justStarted = true;
 		//PlayerController.Instance._canMove = false;
 		GameManager.Instance._dialogActive = true;
+	}
+
+	public void ShouldActivateQuestAtEnd(string questName, bool markComplete)
+	{
+		_questToMark = questName;
+		_markQuestComplete = markComplete;
+
+		_shouldMarkQuest = true;
 	}
 	#endregion
 
