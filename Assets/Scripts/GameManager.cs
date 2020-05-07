@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -54,6 +55,11 @@ public class GameManager : MonoBehaviour
 			RemoveItem("Health Potion");
 			RemoveItem("Crapola");
 		}
+
+		if (Input.GetKeyDown(KeyCode.O))
+			SaveData();
+		if (Input.GetKeyDown(KeyCode.P))
+			LoadData();
 	}
 	#endregion
 
@@ -170,6 +176,52 @@ public class GameManager : MonoBehaviour
 		}
 
 		GameMenu.Instance.ShowItems();
+	}
+
+	public void SaveData()
+	{
+		//current scene
+		PlayerPrefs.SetString("Current_Scene", SceneManager.GetActiveScene().name);
+		//player's position
+		PlayerPrefs.SetFloat("Player_Position_x", PlayerController.Instance.transform.position.x);
+		PlayerPrefs.SetFloat("Player_Position_y", PlayerController.Instance.transform.position.y);
+		PlayerPrefs.SetFloat("Player_Position_z", PlayerController.Instance.transform.position.z);
+		//character infos...
+		for(int i=0; i<_playerStats.Length; i++)
+		{
+			if (_playerStats[i].gameObject.activeSelf)
+			{
+				PlayerPrefs.SetInt("Player_" + _playerStats[i]._charName + "_active", 1);
+			}
+			else
+			{
+				PlayerPrefs.SetInt("Player_" + _playerStats[i]._charName + "_active", 0);
+			}
+
+			PlayerPrefs.SetInt("Player_" + _playerStats[i]._charName + "_level", _playerStats[i]._charLevel);
+			PlayerPrefs.SetInt("Player_" + _playerStats[i]._charName + "_currentEXP", _playerStats[i]._currentEXP);
+			PlayerPrefs.SetInt("Player_" + _playerStats[i]._charName + "_currentHP", _playerStats[i]._currentHP);
+			PlayerPrefs.SetInt("Player_" + _playerStats[i]._charName + "_maxHP", _playerStats[i]._maxHP);
+			PlayerPrefs.SetInt("Player_" + _playerStats[i]._charName + "_currentMP", _playerStats[i]._currentMP);
+			PlayerPrefs.SetInt("Player_" + _playerStats[i]._charName + "_maxMP", _playerStats[i]._maxHP);
+			PlayerPrefs.SetInt("Player_" + _playerStats[i]._charName + "_STR", _playerStats[i]._strength);
+			PlayerPrefs.SetInt("Player_" + _playerStats[i]._charName + "_DEF", _playerStats[i]._defense);
+			PlayerPrefs.SetInt("Player_" + _playerStats[i]._charName + "_wpnPWR", _playerStats[i]._weaponPwr);
+			PlayerPrefs.SetInt("Player_" + _playerStats[i]._charName + "_armPWR", _playerStats[i]._armorPwr);
+			PlayerPrefs.SetString("Player_" + _playerStats[i]._charName + "_equippedWpn", _playerStats[i]._equippedWpn);
+			PlayerPrefs.SetString("Player_" + _playerStats[i]._charName + "_equippedArm", _playerStats[i]._equippedArm);
+		}
+		//inventory data
+		for(int i=0; i<_itemsHeld.Length; i++)
+		{
+			PlayerPrefs.SetString("ItemInInventory_" + i, _itemsHeld[i]);
+			PlayerPrefs.SetInt("ItemAmount_" + i, _numberHeldOfItem[i]);
+		}
+	}
+
+	public void LoadData()
+	{
+		PlayerController.Instance.transform.position = new Vector3(PlayerPrefs.GetFloat("Player_Position_x"), PlayerPrefs.GetFloat("Player_Position_y"), PlayerPrefs.GetFloat("Player_Position_z"));
 	}
 	#endregion
 

@@ -36,10 +36,6 @@ public class QuestManager : MonoBehaviour
 			MarkQuestComplete("quest test");
 			MarkQuestIncomplete("fight the dragon");
 		}
-		if (Input.GetKeyDown(KeyCode.O))
-			SaveQuestData();
-		if (Input.GetKeyDown(KeyCode.P))
-			LoadQuestData();
 	}
 	#endregion
 
