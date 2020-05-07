@@ -128,6 +128,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1668781684074516173, guid: 226601fd7a8bb8c408b205aaeada4b73,
+        type: 3}
+      propertyPath: _questMarkerNames.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668781684074516173, guid: 226601fd7a8bb8c408b205aaeada4b73,
+        type: 3}
+      propertyPath: _questMarkersComplete.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668781684074516173, guid: 226601fd7a8bb8c408b205aaeada4b73,
+        type: 3}
+      propertyPath: _questMarkerNames.Array.data[1]
+      value: fight the dragon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668781684074516173, guid: 226601fd7a8bb8c408b205aaeada4b73,
+        type: 3}
+      propertyPath: _questMarkerNames.Array.data[2]
+      value: enter the cave
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668781684074516173, guid: 226601fd7a8bb8c408b205aaeada4b73,
+        type: 3}
+      propertyPath: _questMarkerNames.Array.data[3]
+      value: quest test
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668781684074516173, guid: 226601fd7a8bb8c408b205aaeada4b73,
+        type: 3}
+      propertyPath: _questMarkerNames.Array.data[4]
+      value: save the world
+      objectReference: {fileID: 0}
     - target: {fileID: 6816193948747662585, guid: 226601fd7a8bb8c408b205aaeada4b73,
         type: 3}
       propertyPath: m_Name
