@@ -9,9 +9,11 @@ public class CameraController : MonoBehaviour
 
 	[SerializeField] Transform _target;
 	[SerializeField] Tilemap _theMap;
+	[SerializeField] int _musicToPlay;
 
 	Vector3 _bottomLeftLimit, _topRightLimit;
 	float _halfHeight, _halfWidth;
+	bool _musicStarted;
 
 	#endregion
 
@@ -38,6 +40,13 @@ public class CameraController : MonoBehaviour
 
 		//keep the camera inside the bounds
 		transform.position = new Vector3(Mathf.Clamp(transform.position.x, _bottomLeftLimit.x, _topRightLimit.x), Mathf.Clamp(transform.position.y, _bottomLeftLimit.y, _topRightLimit.y), transform.position.z);
+
+		if (!_musicStarted)
+		{
+			_musicStarted = true;
+			AudioManager.Instance.PlayMusic(_musicToPlay);
+		}
+
 	}
 	#endregion
 

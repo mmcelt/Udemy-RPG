@@ -64,6 +64,8 @@ public class GameMenu : MonoBehaviour
 				UpdateMainStats();
 				GameManager.Instance._gameMenuOpen = true;
 			}
+
+			AudioManager.Instance.PlaySFX(5);
 		}
 	}
 	#endregion
@@ -241,7 +243,20 @@ public class GameMenu : MonoBehaviour
 		GameManager.Instance.SaveData();
 		QuestManager.Instance.SaveQuestData();
 	}
-	#endregion
+
+	public void QuitGame()
+	{
+#if UNITY_EDITOR
+		UnityEditor.EditorApplication.isPlaying = false;
+#endif
+		Application.Quit();
+	}
+
+	public void PlayButtonSound()
+	{
+		AudioManager.Instance.PlaySFX(4);
+	}
+#endregion
 
 	#region Private Methods
 

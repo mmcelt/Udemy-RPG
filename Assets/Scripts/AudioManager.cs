@@ -44,6 +44,8 @@ public class AudioManager : MonoBehaviour
 
 	public void PlayMusic(int musicToPlay)
 	{
+		if (_music[musicToPlay].isPlaying) return;
+
 		Stopmusic();
 
 		if (musicToPlay < _music.Length)
