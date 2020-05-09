@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -248,6 +249,11 @@ public class GameMenu : MonoBehaviour
 	public void QuitGame()
 	{
 		SceneManager.LoadScene("MainMenu");
+		Destroy(GameManager.Instance.gameObject);
+		Destroy(FindObjectOfType<CameraController>().gameObject);
+		Destroy(PlayerController.Instance.gameObject);
+		Destroy(AudioManager.Instance.gameObject);
+		Destroy(gameObject);
 	}
 
 	public void PlayButtonSound()

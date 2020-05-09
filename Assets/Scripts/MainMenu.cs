@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
 	#region Fields
 
-	[SerializeField] string _newGameScene;
+	[SerializeField] string _continueGameScene, _newGameScene;
 	[SerializeField] GameObject _continueButton;
 
 	#endregion
@@ -18,18 +18,13 @@ public class MainMenu : MonoBehaviour
 	{
 		_continueButton.SetActive(PlayerPrefs.HasKey("Current_Scene"));
 	}
-	
-	void Update() 
-	{
-		
-	}
 	#endregion
 
 	#region Public Methods
 
 	public void Continue()
 	{
-
+		SceneManager.LoadScene(_continueGameScene);
 	}
 
 	public void NewGame()

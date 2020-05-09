@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/_Scenes/MainMenu.unity
     guid: d02151d701762af4da540f7a96a50c64
   - enabled: 1
+    path: Assets/_Scenes/LoadingScene.unity
+    guid: 1d259511e1b8b0e448d088c451d1b655
+  - enabled: 1
     path: Assets/_Scenes/Countryside.unity
     guid: fb4415035ed640f42ac78c866efb55e2
   - enabled: 1
@@ -17,10 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Shop.unity
     guid: f15bb13ed2438344d892cd1167a0cabe
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Test.unity
     guid: 5513582ed0d14e344a7ce82f607a5ff8
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Test2.unity
     guid: f085f5a300ea81746b188457495e7058
   m_configObjects: {}
