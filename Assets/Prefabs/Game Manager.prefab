@@ -117,6 +117,7 @@ MonoBehaviour:
   _dialogActive: 0
   _fadingBetweenAreas: 0
   _shopOpen: 0
+  _battleActive: 0
   _itemsHeld:
   - 
   - 

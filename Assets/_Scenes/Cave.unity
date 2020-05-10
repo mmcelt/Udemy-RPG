@@ -398,9 +398,9 @@ GameObject:
   m_Component:
   - component: {fileID: 69458433}
   m_Layer: 0
-  m_Name: Pos 1 (1)
+  m_Name: Pos 4
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1064,9 +1064,9 @@ GameObject:
   m_Component:
   - component: {fileID: 341668512}
   m_Layer: 0
-  m_Name: Pos 3 (1)
+  m_Name: Pos 6
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1211,7 +1211,7 @@ GameObject:
   m_Layer: 0
   m_Name: Pos 2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -12604,9 +12604,9 @@ GameObject:
   m_Component:
   - component: {fileID: 631109274}
   m_Layer: 0
-  m_Name: Pos 2 (1)
+  m_Name: Pos 5
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -12957,7 +12957,7 @@ GameObject:
   m_Layer: 0
   m_Name: Pos 1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -13259,7 +13259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1015797177
 Transform:
   m_ObjectHideFlags: 0
@@ -13294,11 +13294,11 @@ MonoBehaviour:
   - {fileID: 974588714}
   _enemyPositions:
   - {fileID: 930412869}
-  - {fileID: 470673480}
-  - {fileID: 1543858478}
-  - {fileID: 69458433}
   - {fileID: 631109274}
   - {fileID: 341668512}
+  - {fileID: 69458433}
+  - {fileID: 470673480}
+  - {fileID: 1543858478}
   _playerPrefabs:
   - {fileID: 2295509859084094471, guid: 1857f8c614ff19d4abf208d14c3247b4, type: 3}
   - {fileID: 3094101510100402308, guid: 2c00671c4b59c534ebdb77c874ea88b8, type: 3}
@@ -13307,6 +13307,7 @@ MonoBehaviour:
   - {fileID: 837523526729459293, guid: 9faca68f36b5f4847b0f13217377b1b4, type: 3}
   - {fileID: 3485477476277046174, guid: 506e7e5dfe72ccb4098c26d7a17f6f7e, type: 3}
   - {fileID: 2016347223664328683, guid: 0de6791c07fb0ad4ea421ed857dcc832, type: 3}
+  _activeBattlers: []
 --- !u!1 &1018009634
 GameObject:
   m_ObjectHideFlags: 0
@@ -13503,7 +13504,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1028180219
 Transform:
   m_ObjectHideFlags: 0
@@ -14667,7 +14668,7 @@ GameObject:
   m_Layer: 0
   m_Name: Pos 3
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
