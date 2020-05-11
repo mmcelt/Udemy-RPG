@@ -21,11 +21,6 @@ public class BattleChar : MonoBehaviour
 	{
 		
 	}
-	
-	void Update() 
-	{
-		
-	}
 	#endregion
 
 	#region Public Methods
