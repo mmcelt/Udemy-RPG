@@ -241,6 +241,28 @@ public class BattleManager : MonoBehaviour
 			}
 		}
 	}
+
+	public void PlayerAttack(string move/*, int target*/)
+	{
+		int target = 2;
+
+		int movePower = 0;
+
+		for (int i = 0; i < _moveList.Length; i++)
+		{
+			if (_moveList[i]._moveName == move)
+			{
+				Instantiate(_moveList[i]._thEffect, _activeBattlers[target].transform.position, Quaternion.identity);
+				movePower = _moveList[i]._movePower;
+			}
+		}
+
+		Instantiate(_enemyAttackFX, _activeBattlers[_currentTurn].transform.position, Quaternion.identity);
+
+		DealDamage(target, movePower);
+		_uiButtonsHolder.SetActive(false);
+		NextTurn();
+	}
 	#endregion
 
 	#region Private Methods
