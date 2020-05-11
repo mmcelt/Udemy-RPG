@@ -254,13 +254,9 @@ public class BattleManager : MonoBehaviour
 		{
 			//Debug.Log(_activeBattlers[i]._charName + " " + _activeBattlers[i]._currentHP);
 
-			if (_activeBattlers[i]._currentHP < 0)
+			if(_activeBattlers[i]._currentHP <= 0)
 			{
 				_activeBattlers[i]._currentHP = 0;
-			}
-
-			if(_activeBattlers[i]._currentHP == 0)
-			{
 				//handle dead Battler...
 
 			}
@@ -296,6 +292,17 @@ public class BattleManager : MonoBehaviour
 			_battleActive = false;
 			GameManager.Instance._battleActive = false;
 
+		}
+		else
+		{
+			while(_activeBattlers[_currentTurn]._currentHP == 0)
+			{
+				_currentTurn++;
+				if (_currentTurn >= _activeBattlers.Count)
+				{
+					_currentTurn = 0;
+				}
+			}
 		}
 	}
 	#endregion
