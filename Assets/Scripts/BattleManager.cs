@@ -20,6 +20,7 @@ public class BattleManager : MonoBehaviour
 	public int _currentTurn;
 	public bool _turnWaiting;
 	[SerializeField] GameObject _uiButtonsHolder;
+	[SerializeField] float _enemyTurnDelay = 1f;
 
 	bool _battleActive;
 
@@ -61,6 +62,7 @@ public class BattleManager : MonoBehaviour
 				{
 					_uiButtonsHolder.SetActive(false);
 					//enemy should attack...
+					StartCoroutine(EnemyMoveRoutine());
 				}
 			}
 		}
@@ -141,6 +143,31 @@ public class BattleManager : MonoBehaviour
 		_turnWaiting = true;
 
 		UpdateBattle();
+	}
+
+	public IEnumerator EnemyMoveRoutine()
+	{
+		_turnWaiting = false;
+		yield return new WaitForSeconds(_enemyTurnDelay);
+		EnemyAttack();
+		yield return new WaitForSeconds(_enemyTurnDelay);
+		NextTurn();
+	}
+
+	public void EnemyAttack()
+	{
+		List<int> players = new List<int>();
+		for(int i=0; i<_activeBattlers.Count; i++)
+		{
+			//get the potential player targets...
+			if(_activeBattlers[i]._isPlayer && _activeBattlers[i]._currentHP > 0)
+			{
+				players.Add(i);
+			}
+		}
+		int selectedTarget = players[Random.Range(0, players.Count)];
+
+		_activeBattlers[selectedTarget]._currentHP -= 30;
 	}
 	#endregion
 
