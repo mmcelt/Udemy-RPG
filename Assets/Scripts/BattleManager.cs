@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class BattleManager : MonoBehaviour
 	[SerializeField] float _enemyTurnDelay = 1f;
 	public BattleMove[] _moveList;
 	[SerializeField] DamageNumber _theDamageNumber;
+
+	[Header("UI")]
+	[SerializeField] Text[] _playerName, _playerHP, _playerMP;
 
 	bool _battleActive;
 
@@ -135,9 +139,9 @@ public class BattleManager : MonoBehaviour
 					}
 				}
 			}
-
 			_turnWaiting = true;
 			_currentTurn = Random.Range(0, _activeBattlers.Count);
+			UpdateUIStats();
 		}
 	}
 
@@ -150,6 +154,7 @@ public class BattleManager : MonoBehaviour
 		_turnWaiting = true;
 
 		UpdateBattle();
+		UpdateUIStats();
 	}
 
 	public IEnumerator EnemyMoveRoutine()
@@ -204,6 +209,37 @@ public class BattleManager : MonoBehaviour
 		_activeBattlers[target]._currentHP -= damageToGive;
 
 		Instantiate(_theDamageNumber, _activeBattlers[target].transform.position, Quaternion.identity).SetDamage(damageToGive);
+
+		//if(_activeBattlers[target]._isPlayer)
+			UpdateUIStats();
+	}
+
+	public void UpdateUIStats()
+	{
+		for(int i=0; i<_playerName.Length; i++)
+		{
+			if (_activeBattlers.Count > i)
+			{
+				if (_activeBattlers[i]._isPlayer)
+				{
+					BattleChar playerData = _activeBattlers[i];
+
+					_playerName[i].gameObject.SetActive(true);
+					_playerName[i].text = playerData._charName;
+
+					_playerHP[i].text = Mathf.Clamp(playerData._currentHP, 0, playerData._maxHP) + "/" + playerData._maxHP;
+					_playerMP[i].text = Mathf.Clamp(playerData._currentMP, 0, playerData._maxMP) + "/" + playerData._maxMP;
+				}
+				else
+				{
+					_playerName[i].gameObject.SetActive(false);
+				}
+			}
+			else
+			{
+				_playerName[i].gameObject.SetActive(false);
+			}
+		}
 	}
 	#endregion
 
