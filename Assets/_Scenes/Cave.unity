@@ -13311,6 +13311,8 @@ MonoBehaviour:
   _currentTurn: 0
   _turnWaiting: 0
   _uiButtonsHolder: {fileID: 1265418271}
+  _enemyAttackFX: {fileID: 1522391144863586708, guid: 591fd73adcecf6943b8c0bd0d955897e,
+    type: 3}
   _enemyTurnDelay: 1
   _moveList:
   - _moveName: Slash

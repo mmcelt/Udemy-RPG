@@ -22,6 +22,7 @@ public class BattleManager : MonoBehaviour
 	[SerializeField] GameObject _uiButtonsHolder;
 
 	[Header("Battling")]
+	[SerializeField] GameObject _enemyAttackFX;
 	[SerializeField] float _enemyTurnDelay = 1f;
 	public BattleMove[] _moveList;
 
@@ -128,7 +129,7 @@ public class BattleManager : MonoBehaviour
 						{
 							BattleChar newEnemy = Instantiate(enemy, _enemyPositions[i].transform.position, Quaternion.identity);
 							newEnemy.transform.SetParent(_enemyPositions[i]);
-							_activeBattlers.Add(enemy);
+							_activeBattlers.Add(newEnemy);
 						}
 					}
 				}
@@ -185,6 +186,7 @@ public class BattleManager : MonoBehaviour
 				movePower = _moveList[i]._movePower;
 			}
 		}
+		Instantiate(_enemyAttackFX, _activeBattlers[_currentTurn].transform.position, Quaternion.identity);
 		DealDamage(selectedTarget, movePower);
 	}
 
