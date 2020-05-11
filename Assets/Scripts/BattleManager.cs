@@ -25,6 +25,7 @@ public class BattleManager : MonoBehaviour
 	[SerializeField] GameObject _enemyAttackFX;
 	[SerializeField] float _enemyTurnDelay = 1f;
 	public BattleMove[] _moveList;
+	[SerializeField] DamageNumber _theDamageNumber;
 
 	bool _battleActive;
 
@@ -201,6 +202,8 @@ public class BattleManager : MonoBehaviour
 		Debug.Log(_activeBattlers[_currentTurn]._charName + " is dealing " + calcDamage + "(" + damageToGive + ") damage to " + _activeBattlers[target]._charName);
 
 		_activeBattlers[target]._currentHP -= damageToGive;
+
+		Instantiate(_theDamageNumber, _activeBattlers[target].transform.position, Quaternion.identity).SetDamage(damageToGive);
 	}
 	#endregion
 
