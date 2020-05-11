@@ -95,7 +95,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isPlayer: 0
-  _movesAvailable: []
+  _movesAvailable:
+  - Slash
+  - Fire
   _charName: Skeleton
   _currentHP: 100
   _maxHP: 150

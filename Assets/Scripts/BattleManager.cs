@@ -20,7 +20,10 @@ public class BattleManager : MonoBehaviour
 	public int _currentTurn;
 	public bool _turnWaiting;
 	[SerializeField] GameObject _uiButtonsHolder;
+
+	[Header("Battling")]
 	[SerializeField] float _enemyTurnDelay = 1f;
+	public BattleMove[] _moveList;
 
 	bool _battleActive;
 
@@ -96,8 +99,9 @@ public class BattleManager : MonoBehaviour
 					{
 						if (player._charName == GameManager.Instance._playerStats[i]._charName)
 						{
-							Instantiate(player, _playerPositions[i]);
-							_activeBattlers.Add(player);
+							BattleChar newPlayer = Instantiate(player, _playerPositions[i].transform.position, Quaternion.identity);
+							newPlayer.transform.SetParent(_playerPositions[i]);
+							_activeBattlers.Add(newPlayer);
 
 							CharSats thePlayer = GameManager.Instance._playerStats[i];
 
@@ -122,7 +126,8 @@ public class BattleManager : MonoBehaviour
 					{
 						if (enemy._charName == enemiesToSpawn[i])
 						{
-							Instantiate(enemy, _enemyPositions[i]);
+							BattleChar newEnemy = Instantiate(enemy, _enemyPositions[i].transform.position, Quaternion.identity);
+							newEnemy.transform.SetParent(_enemyPositions[i]);
 							_activeBattlers.Add(enemy);
 						}
 					}
@@ -167,7 +172,15 @@ public class BattleManager : MonoBehaviour
 		}
 		int selectedTarget = players[Random.Range(0, players.Count)];
 
-		_activeBattlers[selectedTarget]._currentHP -= 30;
+		//_activeBattlers[selectedTarget]._currentHP -= 30;
+		int selectedAttack = Random.Range(0, _activeBattlers[_currentTurn]._movesAvailable.Length);
+		for(int i=0; i<_moveList.Length; i++)
+		{
+			if (_moveList[i]._moveName == _activeBattlers[_currentTurn]._movesAvailable[selectedAttack])
+			{
+				Instantiate(_moveList[i]._thEffect, _activeBattlers[selectedTarget].transform.position, Quaternion.identity);
+			}
+		}
 	}
 	#endregion
 

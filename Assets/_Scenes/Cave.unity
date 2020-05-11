@@ -211,7 +211,7 @@ GameObject:
   m_Layer: 0
   m_Name: Pos 1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -13067,7 +13067,7 @@ GameObject:
   m_Layer: 0
   m_Name: Pos 3
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -13312,6 +13312,27 @@ MonoBehaviour:
   _turnWaiting: 0
   _uiButtonsHolder: {fileID: 1265418271}
   _enemyTurnDelay: 1
+  _moveList:
+  - _moveName: Slash
+    _movePower: 40
+    _moveCost: 0
+    _thEffect: {fileID: 3910983317496955909, guid: 374c570ddbd31cf4388679c1507c2e1b,
+      type: 3}
+  - _moveName: Fireball
+    _movePower: 50
+    _moveCost: 5
+    _thEffect: {fileID: 5882820487639811981, guid: 794eded5fb94ccd4c8e16ab64fe3d08e,
+      type: 3}
+  - _moveName: Ice
+    _movePower: 65
+    _moveCost: 5
+    _thEffect: {fileID: 61617415033505131, guid: cb440312b5ccc1c4788a629cd6aed2e8,
+      type: 3}
+  - _moveName: Plasma
+    _movePower: 85
+    _moveCost: 10
+    _thEffect: {fileID: 2574212046553622151, guid: bde39ce0adaeb6243a92ee08abb3eea1,
+      type: 3}
 --- !u!1 &1018009634
 GameObject:
   m_ObjectHideFlags: 0
@@ -13803,7 +13824,7 @@ GameObject:
   m_Layer: 0
   m_Name: Pos 2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
