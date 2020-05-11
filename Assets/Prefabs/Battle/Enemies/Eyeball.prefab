@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isPlayer: 0
   _movesAvailable:
-  - Fire
+  - Fireball
   - Ice
   _charName: Eyeball
   _currentHP: 150

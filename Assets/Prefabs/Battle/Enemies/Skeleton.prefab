@@ -97,7 +97,7 @@ MonoBehaviour:
   _isPlayer: 0
   _movesAvailable:
   - Slash
-  - Fire
+  - Fireball
   _charName: Skeleton
   _currentHP: 100
   _maxHP: 150

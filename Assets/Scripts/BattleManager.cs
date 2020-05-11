@@ -162,6 +162,7 @@ public class BattleManager : MonoBehaviour
 	public void EnemyAttack()
 	{
 		List<int> players = new List<int>();
+
 		for(int i=0; i<_activeBattlers.Count; i++)
 		{
 			//get the potential player targets...
@@ -174,13 +175,30 @@ public class BattleManager : MonoBehaviour
 
 		//_activeBattlers[selectedTarget]._currentHP -= 30;
 		int selectedAttack = Random.Range(0, _activeBattlers[_currentTurn]._movesAvailable.Length);
+		int movePower = 0;
+
 		for(int i=0; i<_moveList.Length; i++)
 		{
 			if (_moveList[i]._moveName == _activeBattlers[_currentTurn]._movesAvailable[selectedAttack])
 			{
 				Instantiate(_moveList[i]._thEffect, _activeBattlers[selectedTarget].transform.position, Quaternion.identity);
+				movePower = _moveList[i]._movePower;
 			}
 		}
+		DealDamage(selectedTarget, movePower);
+	}
+
+	public void DealDamage(int target, int movePower)
+	{
+		float attackPower = _activeBattlers[_currentTurn]._STR + _activeBattlers[_currentTurn]._wpnPwr;
+		float defensePower = _activeBattlers[target]._DEF + _activeBattlers[target]._armPwr;
+
+		float calcDamage = (attackPower / defensePower) * movePower * Random.Range(.8f, 1.2f);
+		int damageToGive = Mathf.RoundToInt(calcDamage);
+
+		Debug.Log(_activeBattlers[_currentTurn]._charName + " is dealing " + calcDamage + "(" + damageToGive + ") damage to " + _activeBattlers[target]._charName);
+
+		_activeBattlers[target]._currentHP -= damageToGive;
 	}
 	#endregion
 
@@ -193,7 +211,7 @@ public class BattleManager : MonoBehaviour
 
 		for (int i=0; i<_activeBattlers.Count; i++)
 		{
-			Debug.Log(_activeBattlers[i]._charName + " " + _activeBattlers[i]._currentHP);
+			//Debug.Log(_activeBattlers[i]._charName + " " + _activeBattlers[i]._currentHP);
 
 			if (_activeBattlers[i]._currentHP < 0)
 			{
@@ -218,8 +236,8 @@ public class BattleManager : MonoBehaviour
 			}
 		}
 
-		Debug.Log("All Players: " + allPlayersDead);
-		Debug.Log("All Enemies: " + allEnemiesDead);
+		//Debug.Log("All Players: " + allPlayersDead);
+		//Debug.Log("All Enemies: " + allEnemiesDead);
 
 		if (allEnemiesDead || allPlayersDead)
 		{
