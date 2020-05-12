@@ -38,7 +38,8 @@ public class BattleMagicButton : MonoBehaviour
 		}
 		else
 		{
-			//TODO: let player know not enough MP
+			BattleManager.Instance._battleNotice.Activate("Not Enough MP!!");
+			BattleManager.Instance._magicMenu.SetActive(false);
 		}
 	}
 	#endregion

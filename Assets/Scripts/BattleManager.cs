@@ -33,6 +33,7 @@ public class BattleManager : MonoBehaviour
 	public GameObject _targetMenu, _magicMenu;
 	[SerializeField] BattleTargetButton[] _targetButtons;
 	[SerializeField] BattleMagicButton[] _magicButtons;
+	public BattleNotification _battleNotice;
 
 	bool _battleActive;
 
