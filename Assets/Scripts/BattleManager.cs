@@ -30,8 +30,9 @@ public class BattleManager : MonoBehaviour
 
 	[Header("UI")]
 	[SerializeField] Text[] _playerName, _playerHP, _playerMP;
-	[SerializeField] GameObject _targetMenu;
+	public GameObject _targetMenu, _magicMenu;
 	[SerializeField] BattleTargetButton[] _targetButtons;
+	[SerializeField] BattleMagicButton[] _magicButtons;
 
 	bool _battleActive;
 
@@ -294,6 +295,33 @@ public class BattleManager : MonoBehaviour
 			{
 				//these are not active enemies
 				_targetButtons[i].gameObject.SetActive(false);
+			}
+		}
+	}
+
+	public void OpenMagicMenu()
+	{
+		_magicMenu.SetActive(true);
+
+		for(int i=0; i<_magicButtons.Length; i++)
+		{
+			if(_activeBattlers[_currentTurn]._movesAvailable.Length > i)
+			{
+				_magicButtons[i].gameObject.SetActive(true);
+				_magicButtons[i]._spellName = _activeBattlers[_currentTurn]._movesAvailable[i];
+				_magicButtons[i]._nameText.text = _magicButtons[i]._spellName;
+				foreach(BattleMove move in _moveList)
+				{
+					if (move._moveName == _magicButtons[i]._spellName)
+					{
+						_magicButtons[i]._spellCost = move._moveCost;
+						_magicButtons[i]._costText.text = _magicButtons[i]._spellCost.ToString();
+					}
+				}
+			}
+			else
+			{
+				_magicButtons[i].gameObject.SetActive(false);
 			}
 		}
 	}

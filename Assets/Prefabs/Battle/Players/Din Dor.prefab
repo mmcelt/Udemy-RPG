@@ -96,10 +96,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isPlayer: 1
-  _movesAvailable: []
+  _movesAvailable:
+  - Fireball
+  - Plasma
   _charName: Din Dor
   _currentHP: 0
   _maxHP: 0
+  _currentMP: 0
+  _maxMP: 0
   _STR: 0
   _DEF: 0
   _wpnPwr: 0
