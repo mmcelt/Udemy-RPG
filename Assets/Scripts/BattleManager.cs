@@ -30,6 +30,8 @@ public class BattleManager : MonoBehaviour
 
 	[Header("UI")]
 	[SerializeField] Text[] _playerName, _playerHP, _playerMP;
+	[SerializeField] GameObject _targetMenu;
+	[SerializeField] BattleTargetButton[] _targetButtons;
 
 	bool _battleActive;
 
@@ -242,10 +244,8 @@ public class BattleManager : MonoBehaviour
 		}
 	}
 
-	public void PlayerAttack(string move/*, int target*/)
+	public void PlayerAttack(string move, int target)
 	{
-		int target = 2;
-
 		int movePower = 0;
 
 		for (int i = 0; i < _moveList.Length; i++)
@@ -261,7 +261,41 @@ public class BattleManager : MonoBehaviour
 
 		DealDamage(target, movePower);
 		_uiButtonsHolder.SetActive(false);
+		_targetMenu.SetActive(false);
 		NextTurn();
+	}
+
+	public void OpenTargetMenu(string moveName)
+	{
+		_targetMenu.SetActive(true);
+
+		List<int> enemies = new List<int>();
+		for(int i=0; i<_activeBattlers.Count; i++)
+		{
+			//check active battlers for enemies...
+			if (!_activeBattlers[i]._isPlayer)
+			{
+				//this will add the enemy's index in the active battlers list
+				enemies.Add(i);
+			}
+		}
+
+		for(int i=0; i<_targetButtons.Length; i++)
+		{
+			if (enemies.Count > i)
+			{
+				//these are active enemies
+				_targetButtons[i].gameObject.SetActive(true);
+				_targetButtons[i]._moveName = moveName;
+				_targetButtons[i]._activeBattlerTarget = enemies[i];
+				_targetButtons[i]._targetName.text = _activeBattlers[enemies[i]]._charName;
+			}
+			else
+			{
+				//these are not active enemies
+				_targetButtons[i].gameObject.SetActive(false);
+			}
+		}
 	}
 	#endregion
 
