@@ -27,6 +27,7 @@ public class CharSats : MonoBehaviour
 	public int _weaponPwr;
 	public int _armorPwr;
 	public string _equippedWpn, _equippedArm;
+	public bool _isDead;
 
 	#endregion
 

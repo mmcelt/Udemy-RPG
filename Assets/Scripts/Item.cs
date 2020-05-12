@@ -97,6 +97,56 @@ public class Item : MonoBehaviour
 		GameMenu.Instance._useButton.interactable = false;
 		GameMenu.Instance._dropButton.interactable = false;
 	}
+
+	public void UseForBattle(int battler)
+	{
+		BattleChar selectedBattler = BattleManager.Instance._activeBattlers[battler];
+		if (_isItem)
+		{
+			if (_affectHP)
+			{
+				selectedBattler._currentHP += _amountToChange;
+				if (selectedBattler._currentHP > selectedBattler._maxHP)
+					selectedBattler._currentHP = selectedBattler._maxHP;
+			}
+
+			if (_affectMP)
+			{
+				selectedBattler._currentMP += _amountToChange;
+				if (selectedBattler._currentMP > selectedBattler._maxMP)
+					selectedBattler._currentMP = selectedBattler._maxMP;
+			}
+
+			if (_affectSTR)
+			{
+				selectedBattler._STR += _amountToChange;  //this should be a small amount
+			}
+		}
+
+		if (_isWeapon)
+		{
+			if (selectedBattler._equippedWpn != "") //character already has a weapon equipped
+			{
+				//return the existing equipped weapon to the inventory
+				GameManager.Instance.AddItem(selectedBattler._equippedWpn);
+			}
+			selectedBattler._equippedWpn = _itemName;
+			selectedBattler._wpnPwr = _weaponStr;
+		}
+
+		if (_isArmor)
+		{
+			if (selectedBattler._equippedArm != "") //character already has armor equipped
+			{
+				//return the existing equipped armor to the inventory
+				GameManager.Instance.AddItem(selectedBattler._equippedArm);
+			}
+			selectedBattler._equippedArm = _itemName;
+			selectedBattler._armPwr = _armorStr;
+		}
+		GameManager.Instance.RemoveItem(_itemName);   //remove the item from the inventory
+	}
+
 	#endregion
 
 	#region Private Methods

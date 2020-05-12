@@ -82,6 +82,19 @@ public class ItemButtton : MonoBehaviour
 				}
 			}
 		}
+
+		if (GameManager.Instance._battleActive)
+		{
+			if(GameManager.Instance._itemsHeld[_buttonValue] != "")
+			{
+				BattleManager.Instance.SelectItem(GameManager.Instance.GetItemDetails(GameManager.Instance._itemsHeld[_buttonValue]));
+				BattleManager.Instance._useButton.interactable = true;
+			}
+			else
+			{
+				BattleManager.Instance._useButton.interactable = false;
+			}
+		}
 	}
 	#endregion
 

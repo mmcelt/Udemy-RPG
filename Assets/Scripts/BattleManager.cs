@@ -27,13 +27,21 @@ public class BattleManager : MonoBehaviour
 	[SerializeField] float _enemyTurnDelay = 1f;
 	public BattleMove[] _moveList;
 	[SerializeField] DamageNumber _theDamageNumber;
+	[SerializeField] int _chanceToFlee = 35;
 
 	[Header("UI")]
 	[SerializeField] Text[] _playerName, _playerHP, _playerMP;
-	public GameObject _targetMenu, _magicMenu;
+	public GameObject _targetMenu, _magicMenu, _useItemMenu;
 	[SerializeField] BattleTargetButton[] _targetButtons;
 	[SerializeField] BattleMagicButton[] _magicButtons;
 	public BattleNotification _battleNotice;
+	[SerializeField] ItemButtton[] _itemButtons;
+	[SerializeField] Text _itemNameText, _itemDescriptionText, _useButtonText;
+	[SerializeField] GameObject _itemCharChoicePanel;
+	[SerializeField] Text[] _itemCharSelectButtonNames;
+	public Button _useButton;
+
+	Item _activeItem;
 
 	bool _battleActive;
 
@@ -51,12 +59,12 @@ public class BattleManager : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 	}
 
-	void Start() 
+	void Start()
 	{
-		
+
 	}
-	
-	void Update() 
+
+	void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.T))
 		{
@@ -83,7 +91,7 @@ public class BattleManager : MonoBehaviour
 		{
 			NextTurn();
 		}
-			
+
 	}
 	#endregion
 
@@ -95,17 +103,19 @@ public class BattleManager : MonoBehaviour
 		{
 			_battleActive = true;
 			GameManager.Instance._battleActive = true;
+			_activeBattlers.Clear();
+
 			//move the BattleManager to the camera's position...
 			transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, transform.position.z);
 
 			_battleScene.SetActive(true);
 			AudioManager.Instance.PlayMusic(0);
 
-			for(int i=0; i<_playerPositions.Length; i++)
+			for (int i = 0; i < _playerPositions.Length; i++)
 			{
 				if (GameManager.Instance._playerStats[i].gameObject.activeSelf)
 				{
-					foreach(BattleChar player in _playerPrefabs)
+					foreach (BattleChar player in _playerPrefabs)
 					{
 						if (player._charName == GameManager.Instance._playerStats[i]._charName)
 						{
@@ -128,11 +138,11 @@ public class BattleManager : MonoBehaviour
 				}
 			}
 			//enemies
-			for(int i=0; i<enemiesToSpawn.Length; i++)
+			for (int i = 0; i < enemiesToSpawn.Length; i++)
 			{
-				if(enemiesToSpawn[i] != "")
+				if (enemiesToSpawn[i] != "")
 				{
-					foreach(BattleChar enemy in _enemyPrefabs)
+					foreach (BattleChar enemy in _enemyPrefabs)
 					{
 						if (enemy._charName == enemiesToSpawn[i])
 						{
@@ -174,10 +184,10 @@ public class BattleManager : MonoBehaviour
 	{
 		List<int> players = new List<int>();
 
-		for(int i=0; i<_activeBattlers.Count; i++)
+		for (int i = 0; i < _activeBattlers.Count; i++)
 		{
 			//get the potential player targets...
-			if(_activeBattlers[i]._isPlayer && _activeBattlers[i]._currentHP > 0)
+			if (_activeBattlers[i]._isPlayer && _activeBattlers[i]._currentHP > 0)
 			{
 				players.Add(i);
 			}
@@ -188,7 +198,7 @@ public class BattleManager : MonoBehaviour
 		int selectedAttack = Random.Range(0, _activeBattlers[_currentTurn]._movesAvailable.Length);
 		int movePower = 0;
 
-		for(int i=0; i<_moveList.Length; i++)
+		for (int i = 0; i < _moveList.Length; i++)
 		{
 			if (_moveList[i]._moveName == _activeBattlers[_currentTurn]._movesAvailable[selectedAttack])
 			{
@@ -215,12 +225,12 @@ public class BattleManager : MonoBehaviour
 		Instantiate(_theDamageNumber, _activeBattlers[target].transform.position, Quaternion.identity).SetDamage(damageToGive);
 
 		//if(_activeBattlers[target]._isPlayer)
-			UpdateUIStats();
+		UpdateUIStats();
 	}
 
 	public void UpdateUIStats()
 	{
-		for(int i=0; i<_playerName.Length; i++)
+		for (int i = 0; i < _playerName.Length; i++)
 		{
 			if (_activeBattlers.Count > i)
 			{
@@ -272,7 +282,7 @@ public class BattleManager : MonoBehaviour
 		_targetMenu.SetActive(true);
 
 		List<int> enemies = new List<int>();
-		for(int i=0; i<_activeBattlers.Count; i++)
+		for (int i = 0; i < _activeBattlers.Count; i++)
 		{
 			//check active battlers for enemies...
 			if (!_activeBattlers[i]._isPlayer)
@@ -282,7 +292,7 @@ public class BattleManager : MonoBehaviour
 			}
 		}
 
-		for(int i=0; i<_targetButtons.Length; i++)
+		for (int i = 0; i < _targetButtons.Length; i++)
 		{
 			if (enemies.Count > i)
 			{
@@ -304,14 +314,14 @@ public class BattleManager : MonoBehaviour
 	{
 		_magicMenu.SetActive(true);
 
-		for(int i=0; i<_magicButtons.Length; i++)
+		for (int i = 0; i < _magicButtons.Length; i++)
 		{
-			if(_activeBattlers[_currentTurn]._movesAvailable.Length > i)
+			if (_activeBattlers[_currentTurn]._movesAvailable.Length > i)
 			{
 				_magicButtons[i].gameObject.SetActive(true);
 				_magicButtons[i]._spellName = _activeBattlers[_currentTurn]._movesAvailable[i];
 				_magicButtons[i]._nameText.text = _magicButtons[i]._spellName;
-				foreach(BattleMove move in _moveList)
+				foreach (BattleMove move in _moveList)
 				{
 					if (move._moveName == _magicButtons[i]._spellName)
 					{
@@ -326,6 +336,74 @@ public class BattleManager : MonoBehaviour
 			}
 		}
 	}
+
+	public void Retreat()
+	{
+		int retreatSucess = Random.Range(0, 100);
+
+		if (retreatSucess <= _chanceToFlee)
+		{
+			//end battle
+			_battleActive = false;
+			_battleScene.SetActive(false);
+		}
+		else
+		{
+			_battleNotice.Activate("You couldn't Escape!!");
+			NextTurn();
+		}
+	}
+
+	public void OpenUseItemPanel()
+	{
+		_useItemMenu.SetActive(true);
+		ShowItems();
+	}
+
+	public void SelectItem(Item newItem)
+	{
+		_activeItem = newItem;
+
+		if (_activeItem._isItem)
+			_useButtonText.text = "Use";
+
+		if (_activeItem._isWeapon || _activeItem._isArmor)
+			_useButtonText.text = "Equip";
+
+		_itemNameText.text = _activeItem._itemName;
+		_itemDescriptionText.text = _activeItem._itemDesc;
+	}
+
+	public void useItem(int selectChar)
+	{
+		_activeItem.UseForBattle(selectChar);
+		_useItemMenu.SetActive(false);
+		ShowItems();
+		//UpdateBattleStats();
+		UpdateUIStats();
+		UpdateBattle();
+		NextTurn();
+		_activeItem = null;
+	}
+
+	public void OpenItemCharChoice()
+	{
+		if (_activeItem == null) return;
+
+		_itemCharChoicePanel.SetActive(true);
+
+		for (int i = 0; i < _itemCharSelectButtonNames.Length; i++)
+		{
+			if (_activeBattlers[i]._isPlayer)
+			{
+				_itemCharSelectButtonNames[i].text = _activeBattlers[i]._charName;
+
+				_itemCharSelectButtonNames[i].transform.parent.gameObject.SetActive(true);
+			}
+			else
+				_itemCharSelectButtonNames[i].transform.parent.gameObject.SetActive(false);
+		}
+	}
 	#endregion
 
 	#region Private Methods
@@ -335,11 +413,11 @@ public class BattleManager : MonoBehaviour
 		bool allEnemiesDead = true;
 		bool allPlayersDead = true;
 
-		for (int i=0; i<_activeBattlers.Count; i++)
+		for (int i = 0; i < _activeBattlers.Count; i++)
 		{
 			//Debug.Log(_activeBattlers[i]._charName + " " + _activeBattlers[i]._currentHP);
 
-			if(_activeBattlers[i]._currentHP <= 0)
+			if (_activeBattlers[i]._currentHP <= 0)
 			{
 				_activeBattlers[i]._currentHP = 0;
 				//handle dead Battler...
@@ -373,6 +451,7 @@ public class BattleManager : MonoBehaviour
 				//end battle in defeat...
 			}
 
+			UpdatePlayerStats();
 			_battleScene.SetActive(false);
 			_battleActive = false;
 			GameManager.Instance._battleActive = false;
@@ -380,12 +459,61 @@ public class BattleManager : MonoBehaviour
 		}
 		else
 		{
-			while(_activeBattlers[_currentTurn]._currentHP == 0)
+			while (_activeBattlers[_currentTurn]._currentHP == 0)
 			{
 				_currentTurn++;
 				if (_currentTurn >= _activeBattlers.Count)
 				{
 					_currentTurn = 0;
+				}
+			}
+		}
+	}
+
+	void ShowItems()
+	{
+		GameManager.Instance.SortItems();
+
+		for (int i = 0; i < _itemButtons.Length; i++)
+		{
+			//assign the button values to each item button
+			_itemButtons[i]._buttonValue = i;
+
+			//cache the string of the item name for each iteration
+			string selectedItemName = GameManager.Instance._itemsHeld[i];
+
+			if (selectedItemName != "")
+			{
+				_itemButtons[i]._buttonImage.gameObject.SetActive(true);
+				_itemButtons[i]._buttonImage.sprite = GameManager.Instance.GetItemDetails(selectedItemName)._itemSprite;
+				_itemButtons[i]._amountText.text = GameManager.Instance._numberHeldOfItem[i].ToString();
+			}
+			else
+			{
+				_itemButtons[i]._buttonImage.gameObject.SetActive(false);
+				_itemButtons[i]._amountText.text = "";
+			}
+		}
+	}
+
+	void UpdatePlayerStats()
+	{
+		for (int i = 0; i < _activeBattlers.Count; i++)
+		{
+			if (_activeBattlers[i]._isPlayer)
+			{
+				for (int j = 0; j < GameManager.Instance._playerStats.Length; j++)
+				{
+					if (_activeBattlers[i]._charName == GameManager.Instance._playerStats[j]._charName)
+					{
+						GameManager.Instance._playerStats[j]._currentHP = _activeBattlers[i]._currentHP;
+						GameManager.Instance._playerStats[j]._currentMP = _activeBattlers[i]._currentMP;
+						GameManager.Instance._playerStats[j]._armorPwr = _activeBattlers[i]._armPwr;
+						GameManager.Instance._playerStats[j]._equippedArm = _activeBattlers[i]._equippedArm;
+						GameManager.Instance._playerStats[j]._weaponPwr = _activeBattlers[i]._wpnPwr;
+						GameManager.Instance._playerStats[j]._equippedWpn = _activeBattlers[i]._equippedWpn;
+						GameManager.Instance._playerStats[j]._isDead = _activeBattlers[i]._hasDied;
+					}
 				}
 			}
 		}

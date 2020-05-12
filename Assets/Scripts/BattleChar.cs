@@ -11,6 +11,7 @@ public class BattleChar : MonoBehaviour
 
 	public string _charName;
 	public int _currentHP, _maxHP, _currentMP, _maxMP, _STR, _DEF, _wpnPwr, _armPwr;
+	public string _equippedWpn, _equippedArm;
 	public bool _hasDied;
 
 	#endregion

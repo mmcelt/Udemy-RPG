@@ -22,6 +22,7 @@ public class GameMenu : MonoBehaviour
 	[SerializeField] GameObject[] _statusButtons;
 	[SerializeField] Image _playerImage;
 	[SerializeField] Text _nameText, _hpText, _mpText, _strText, _defText, _wpnText, _wpnPwrText, _armText, _armPwrText, _expText;
+	[Header("Item Panel")]
 	[SerializeField] ItemButtton[] _itemButtons;
 	string _selectedItem;
 	Item _activeItem;
