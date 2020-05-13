@@ -421,13 +421,18 @@ public class BattleManager : MonoBehaviour
 			{
 				_activeBattlers[i]._currentHP = 0;
 				//handle dead Battler...
-
+				if (_activeBattlers[i]._isPlayer)
+				{
+					_activeBattlers[i]._theSprite.sprite = _activeBattlers[i]._deadSprite;
+				}
+				
 			}
 			else
 			{
 				if (_activeBattlers[i]._isPlayer)
 				{
 					allPlayersDead = false;
+					_activeBattlers[i]._theSprite.sprite = _activeBattlers[i]._aliveSprite;
 				}
 				else
 				{

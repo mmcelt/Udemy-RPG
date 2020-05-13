@@ -108,4 +108,11 @@ MonoBehaviour:
   _DEF: 0
   _wpnPwr: 0
   _armPwr: 0
+  _equippedWpn: 
+  _equippedArm: 
   _hasDied: 0
+  _theSprite: {fileID: 2295509859084094469}
+  _deadSprite: {fileID: -2742738481261246757, guid: d63b420b9364cbb49825d6ad736114d8,
+    type: 3}
+  _aliveSprite: {fileID: -1038918931832879880, guid: 74224087805f0674ba64843071da1ab7,
+    type: 3}

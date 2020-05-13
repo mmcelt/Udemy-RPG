@@ -14,6 +14,9 @@ public class BattleChar : MonoBehaviour
 	public string _equippedWpn, _equippedArm;
 	public bool _hasDied;
 
+	public SpriteRenderer _theSprite;
+	public Sprite _deadSprite, _aliveSprite;
+
 	#endregion
 
 	#region MonoBehaviour Methods
