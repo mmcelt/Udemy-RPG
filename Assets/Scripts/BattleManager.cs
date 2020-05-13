@@ -294,7 +294,7 @@ public class BattleManager : MonoBehaviour
 
 		for (int i = 0; i < _targetButtons.Length; i++)
 		{
-			if (enemies.Count > i)
+			if (enemies.Count > i /*&& _activeBattlers[enemies[i]]._currentHP > 0*/)
 			{
 				//these are active enemies
 				_targetButtons[i].gameObject.SetActive(true);
@@ -425,7 +425,11 @@ public class BattleManager : MonoBehaviour
 				{
 					_activeBattlers[i]._theSprite.sprite = _activeBattlers[i]._deadSprite;
 				}
-				
+				else
+				{
+					_activeBattlers[i].EnemyFade();
+					_activeBattlers.RemoveAt(i);
+				}
 			}
 			else
 			{

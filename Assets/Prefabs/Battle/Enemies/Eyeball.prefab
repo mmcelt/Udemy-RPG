@@ -107,4 +107,10 @@ MonoBehaviour:
   _DEF: 5
   _wpnPwr: 5
   _armPwr: 5
+  _equippedWpn: 
+  _equippedArm: 
   _hasDied: 0
+  _theSprite: {fileID: 837523526729459295}
+  _deadSprite: {fileID: 0}
+  _aliveSprite: {fileID: 0}
+  _fadeSpeed: 0.5
