@@ -101,7 +101,7 @@ MonoBehaviour:
   - Fireball
   - Ice
   _charName: Eyeball
-  _currentHP: 150
+  _currentHP: 200
   _maxHP: 250
   _currentMP: 0
   _maxMP: 0

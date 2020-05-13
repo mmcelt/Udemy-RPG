@@ -12938,6 +12938,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4638990441125947456, guid: f4aae4887bcace84c8919fa1427a5e79,
+        type: 3}
+      propertyPath: _rewardItems.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638990441125947456, guid: f4aae4887bcace84c8919fa1427a5e79,
+        type: 3}
+      propertyPath: _rewardXP
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638990441125947456, guid: f4aae4887bcace84c8919fa1427a5e79,
+        type: 3}
+      propertyPath: _rewardItems.Array.data[0]
+      value: Iron Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638990441125947456, guid: f4aae4887bcace84c8919fa1427a5e79,
+        type: 3}
+      propertyPath: _rewardItems.Array.data[1]
+      value: Iron Armor
+      objectReference: {fileID: 0}
     - target: {fileID: 4638990441125947458, guid: f4aae4887bcace84c8919fa1427a5e79,
         type: 3}
       propertyPath: m_Name

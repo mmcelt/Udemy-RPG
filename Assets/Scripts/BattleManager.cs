@@ -30,6 +30,7 @@ public class BattleManager : MonoBehaviour
 	public BattleMove[] _moveList;
 	[SerializeField] DamageNumber _theDamageNumber;
 	[SerializeField] int _chanceToFlee = 35;
+	bool _retreating;
 
 	[Header("UI")]
 	[SerializeField] Text[] _playerName, _playerHP, _playerMP;
@@ -43,6 +44,11 @@ public class BattleManager : MonoBehaviour
 	[SerializeField] Text[] _itemCharSelectButtonNames;
 	public Button _useButton;
 	[SerializeField] Slider[] _enemyHealthbars;
+
+	[Header("Rewards")]
+	[SerializeField] int _rewardXP;
+	[SerializeField] string[] _rewardItems;
+	//TODO: ADD GOLD
 
 	Item _activeItem;
 
@@ -71,7 +77,7 @@ public class BattleManager : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.T))
 		{
-			BattleStart(new string[] { "Eyeball", "Spider", "Skeleton" });
+			BattleStart(new string[] { "Eyeball" });
 		}
 
 		if (_battleActive)
@@ -359,6 +365,7 @@ public class BattleManager : MonoBehaviour
 			//end battle
 			//_battleActive = false;
 			//_battleScene.SetActive(false);
+			_retreating = true;
 			StartCoroutine(EndBattleRoutine());
 		}
 		else
@@ -438,6 +445,7 @@ public class BattleManager : MonoBehaviour
 				if (_activeBattlers[i]._isPlayer)
 				{
 					_activeBattlers[i]._theSprite.sprite = _activeBattlers[i]._deadSprite;
+					_activeBattlers[i]._hasDied = true;
 				}
 				else
 				{
@@ -451,6 +459,7 @@ public class BattleManager : MonoBehaviour
 				{
 					allPlayersDead = false;
 					_activeBattlers[i]._theSprite.sprite = _activeBattlers[i]._aliveSprite;
+					_activeBattlers[i]._hasDied = false;
 				}
 				else
 				{
@@ -565,7 +574,17 @@ public class BattleManager : MonoBehaviour
 		_battleScene.SetActive(false);
 		_activeBattlers.Clear();
 		_currentTurn = 0;
-		GameManager.Instance._battleActive = false;
+
+		if (_retreating)
+		{
+			GameManager.Instance._battleActive = false;
+			_retreating = false;
+		}
+		else
+		{
+			BattleRewards.Instance.OpenRewardScreen(_rewardXP, _rewardItems);
+		}
+
 		AudioManager.Instance.PlayMusic(Camera.main.GetComponent<CameraController>()._musicToPlay);
 	}
 

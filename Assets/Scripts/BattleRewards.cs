@@ -61,7 +61,20 @@ public class BattleRewards : MonoBehaviour
 
 	public void CloseRewardScreen()
 	{
+		for(int i=0; i<GameManager.Instance._playerStats.Length; i++)
+		{
+			if (GameManager.Instance._playerStats[i].gameObject.activeSelf && !GameManager.Instance._playerStats[i]._isDead)
+			{
+				GameManager.Instance._playerStats[i].AddExp(_xpEarned);
+			}
+		}
 
+		for(int i=0; i<_rewardItems.Length; i++)
+		{
+			GameManager.Instance.AddItem(_rewardItems[i]);
+		}
+
+		GameManager.Instance._battleActive = false;
 		_rewardScreen.SetActive(false);
 	}
 	#endregion
