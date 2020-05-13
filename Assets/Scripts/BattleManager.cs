@@ -576,6 +576,10 @@ public class BattleManager : MonoBehaviour
 		_targetMenu.SetActive(false);
 		_magicMenu.SetActive(false);
 		_useItemMenu.SetActive(false);
+		_battleScene.SetActive(false);
+		_activeBattlers.Clear();
+		_currentTurn = 0;
+		GameManager.Instance._battleActive = false;
 		UIFade.Instance.FadeToBlack();
 
 		yield return new WaitForSeconds(1.5f);
