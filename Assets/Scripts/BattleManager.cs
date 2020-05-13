@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
@@ -16,6 +15,7 @@ public class BattleManager : MonoBehaviour
 	[SerializeField] Transform[] _enemyPositions;
 	[SerializeField] BattleChar[] _playerPrefabs;
 	[SerializeField] BattleChar[] _enemyPrefabs;
+	[SerializeField] string _gameOverScene;
 
 	public List<BattleChar> _activeBattlers = new List<BattleChar>();
 
@@ -473,6 +473,7 @@ public class BattleManager : MonoBehaviour
 			else
 			{
 				//end battle in defeat...
+				StartCoroutine(GameOverRoutine());
 			}
 
 			//UpdatePlayerStats();
@@ -557,7 +558,7 @@ public class BattleManager : MonoBehaviour
 
 		UIFade.Instance.FadeToBlack();
 
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(1.5f);
 
 		UpdatePlayerStats();
 		UIFade.Instance.FadeFromBlack();
@@ -566,6 +567,20 @@ public class BattleManager : MonoBehaviour
 		_currentTurn = 0;
 		GameManager.Instance._battleActive = false;
 		AudioManager.Instance.PlayMusic(Camera.main.GetComponent<CameraController>()._musicToPlay);
+	}
+
+	IEnumerator GameOverRoutine()
+	{
+		_battleActive = false;
+		_uiButtonsHolder.SetActive(false);
+		_targetMenu.SetActive(false);
+		_magicMenu.SetActive(false);
+		_useItemMenu.SetActive(false);
+		UIFade.Instance.FadeToBlack();
+
+		yield return new WaitForSeconds(1.5f);
+
+		SceneManager.LoadScene(_gameOverScene);
 	}
 	#endregion
 }

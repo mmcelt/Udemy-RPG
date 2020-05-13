@@ -6,15 +6,11 @@ public class EssentialsLoader : MonoBehaviour
 {
 	#region Fields
 
-	[SerializeField] GameObject _uiScreen, _player, _gameManager, _audioManager;
+	[SerializeField] GameObject _uiScreen, _player, _gameManager, _audioManager, _battleManager;
 
 	#endregion
 
 	#region MonoBehaviour Methods
-
-	void Awake()
-	{
-	}
 
 	void Start() 
 	{
@@ -24,8 +20,7 @@ public class EssentialsLoader : MonoBehaviour
 		}
 		if (PlayerController.Instance == null)
 		{
-			PlayerController clone = Instantiate(_player).GetComponent<PlayerController>();
-			PlayerController.Instance = clone;
+			PlayerController.Instance = Instantiate(_player).GetComponent<PlayerController>();
 		}
 		if (GameManager.Instance == null)
 		{
@@ -35,11 +30,10 @@ public class EssentialsLoader : MonoBehaviour
 		{
 			AudioManager.Instance = Instantiate(_audioManager).GetComponent<AudioManager>();
 		}
-	}
-
-	void Update() 
-	{
-		
+		if (BattleManager.Instance == null)
+		{
+			BattleManager.Instance = Instantiate(_battleManager).GetComponent<BattleManager>();
+		}
 	}
 	#endregion
 
