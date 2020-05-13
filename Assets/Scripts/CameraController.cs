@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
 
 	[SerializeField] Transform _target;
 	[SerializeField] Tilemap _theMap;
-	[SerializeField] int _musicToPlay;
+	public int _musicToPlay;
 
 	Vector3 _bottomLeftLimit, _topRightLimit;
 	float _halfHeight, _halfWidth;

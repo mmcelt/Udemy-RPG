@@ -50,7 +50,7 @@ MonoBehaviour:
   _expToNextLevel: 
   _maxLevel: 10
   _baseEXP: 1000
-  _currentHP: 0
+  _currentHP: 150
   _maxHP: 150
   _currentMP: 0
   _maxMP: 25
@@ -62,6 +62,7 @@ MonoBehaviour:
   _armorPwr: 0
   _equippedWpn: 
   _equippedArm: 
+  _isDead: 0
 --- !u!1 &6816193948747662585
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +253,7 @@ MonoBehaviour:
   _armorPwr: 0
   _equippedWpn: 
   _equippedArm: 
+  _isDead: 0
 --- !u!1 &6816193949168727583
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +306,7 @@ MonoBehaviour:
   _maxLevel: 10
   _baseEXP: 1000
   _currentHP: 0
-  _maxHP: 100
+  _maxHP: 500
   _currentMP: 0
   _maxMP: 30
   _nextLvlMultiplier: 1.03
@@ -315,3 +317,4 @@ MonoBehaviour:
   _armorPwr: 0
   _equippedWpn: 
   _equippedArm: 
+  _isDead: 0

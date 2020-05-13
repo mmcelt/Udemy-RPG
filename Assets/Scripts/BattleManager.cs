@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
@@ -40,6 +42,7 @@ public class BattleManager : MonoBehaviour
 	[SerializeField] GameObject _itemCharChoicePanel;
 	[SerializeField] Text[] _itemCharSelectButtonNames;
 	public Button _useButton;
+	[SerializeField] Slider[] _enemyHealthbars;
 
 	Item _activeItem;
 
@@ -243,6 +246,16 @@ public class BattleManager : MonoBehaviour
 
 					_playerHP[i].text = Mathf.Clamp(playerData._currentHP, 0, playerData._maxHP) + "/" + playerData._maxHP;
 					_playerMP[i].text = Mathf.Clamp(playerData._currentMP, 0, playerData._maxMP) + "/" + playerData._maxMP;
+
+					//update who is up indication
+					if (i == _currentTurn)
+					{
+						_playerName[i].color = Color.green;
+					}
+					else
+					{
+						_playerName[i].color = Color.white;
+					}
 				}
 				else
 				{
@@ -294,7 +307,7 @@ public class BattleManager : MonoBehaviour
 
 		for (int i = 0; i < _targetButtons.Length; i++)
 		{
-			if (enemies.Count > i /*&& _activeBattlers[enemies[i]]._currentHP > 0*/)
+			if (enemies.Count > i && _activeBattlers[enemies[i]]._currentHP > 0)
 			{
 				//these are active enemies
 				_targetButtons[i].gameObject.SetActive(true);
@@ -344,8 +357,9 @@ public class BattleManager : MonoBehaviour
 		if (retreatSucess <= _chanceToFlee)
 		{
 			//end battle
-			_battleActive = false;
-			_battleScene.SetActive(false);
+			//_battleActive = false;
+			//_battleScene.SetActive(false);
+			StartCoroutine(EndBattleRoutine());
 		}
 		else
 		{
@@ -428,7 +442,7 @@ public class BattleManager : MonoBehaviour
 				else
 				{
 					_activeBattlers[i].EnemyFade();
-					_activeBattlers.RemoveAt(i);
+					//_activeBattlers.RemoveAt(i);
 				}
 			}
 			else
@@ -454,16 +468,17 @@ public class BattleManager : MonoBehaviour
 			if (allEnemiesDead)
 			{
 				//end battle in victory..
+				StartCoroutine(EndBattleRoutine());
 			}
 			else
 			{
 				//end battle in defeat...
 			}
 
-			UpdatePlayerStats();
-			_battleScene.SetActive(false);
-			_battleActive = false;
-			GameManager.Instance._battleActive = false;
+			//UpdatePlayerStats();
+			//_battleScene.SetActive(false);
+			//_battleActive = false;
+			//GameManager.Instance._battleActive = false;
 
 		}
 		else
@@ -505,7 +520,7 @@ public class BattleManager : MonoBehaviour
 		}
 	}
 
-	void UpdatePlayerStats()
+	void UpdatePlayerStats()	//transfer the players stats to the GameManager
 	{
 		for (int i = 0; i < _activeBattlers.Count; i++)
 		{
@@ -525,7 +540,32 @@ public class BattleManager : MonoBehaviour
 					}
 				}
 			}
+
+			Destroy(_activeBattlers[i].gameObject);
 		}
+	}
+
+	IEnumerator EndBattleRoutine()
+	{
+		_battleActive = false;
+		_uiButtonsHolder.SetActive(false);
+		_targetMenu.SetActive(false);
+		_magicMenu.SetActive(false);
+		_useItemMenu.SetActive(false);
+
+		yield return new WaitForSeconds(0.5f);
+
+		UIFade.Instance.FadeToBlack();
+
+		yield return new WaitForSeconds(1f);
+
+		UpdatePlayerStats();
+		UIFade.Instance.FadeFromBlack();
+		_battleScene.SetActive(false);
+		_activeBattlers.Clear();
+		_currentTurn = 0;
+		GameManager.Instance._battleActive = false;
+		AudioManager.Instance.PlayMusic(Camera.main.GetComponent<CameraController>()._musicToPlay);
 	}
 	#endregion
 }

@@ -16521,6 +16521,7 @@ MonoBehaviour:
   - {fileID: 2031525306}
   - {fileID: 2012730104}
   _useButton: {fileID: 2324892598214047126}
+  _enemyHealthbars: []
 --- !u!1 &1018009634
 GameObject:
   m_ObjectHideFlags: 0
@@ -18543,6 +18544,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Area Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 5526051855862086670, guid: f212a4089b540354c9ffb257fb74b9c2,
+        type: 3}
+      propertyPath: _areaToLoad
+      value: Countryside
       objectReference: {fileID: 0}
     - target: {fileID: 5526051855862086671, guid: f212a4089b540354c9ffb257fb74b9c2,
         type: 3}
