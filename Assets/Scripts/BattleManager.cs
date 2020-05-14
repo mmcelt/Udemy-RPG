@@ -43,11 +43,11 @@ public class BattleManager : MonoBehaviour
 	[SerializeField] GameObject _itemCharChoicePanel;
 	[SerializeField] Text[] _itemCharSelectButtonNames;
 	public Button _useButton;
-	[SerializeField] Slider[] _enemyHealthbars;
+	//Slider[] _enemyHealthbars;
 
 	[Header("Rewards")]
-	[SerializeField] int _rewardXP;
-	[SerializeField] string[] _rewardItems;
+	public int _rewardXP;
+	public string[] _rewardItems;
 	//TODO: ADD GOLD
 
 	Item _activeItem;
