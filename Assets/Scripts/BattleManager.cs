@@ -30,6 +30,8 @@ public class BattleManager : MonoBehaviour
 	public BattleMove[] _moveList;
 	[SerializeField] DamageNumber _theDamageNumber;
 	[SerializeField] int _chanceToFlee = 35;
+
+	bool _canRetreat;
 	bool _retreating;
 
 	[Header("UI")]
@@ -77,7 +79,7 @@ public class BattleManager : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.T))
 		{
-			BattleStart(new string[] { "Eyeball" });
+			BattleStart(new string[] { "Eyeball" }, false);
 		}
 
 		if (_battleActive)
@@ -106,10 +108,12 @@ public class BattleManager : MonoBehaviour
 
 	#region Public Methods
 
-	public void BattleStart(string[] enemiesToSpawn)
+	public void BattleStart(string[] enemiesToSpawn, bool canRetreat)
 	{
 		if (!_battleActive)
 		{
+			_canRetreat = canRetreat;
+
 			_battleActive = true;
 			GameManager.Instance._battleActive = true;
 			_activeBattlers.Clear();
@@ -358,20 +362,27 @@ public class BattleManager : MonoBehaviour
 
 	public void Retreat()
 	{
-		int retreatSucess = Random.Range(0, 100);
-
-		if (retreatSucess <= _chanceToFlee)
+		if (_canRetreat)
 		{
-			//end battle
-			//_battleActive = false;
-			//_battleScene.SetActive(false);
-			_retreating = true;
-			StartCoroutine(EndBattleRoutine());
+			int retreatSucess = Random.Range(0, 100);
+
+			if (retreatSucess <= _chanceToFlee)
+			{
+				//end battle
+				//_battleActive = false;
+				//_battleScene.SetActive(false);
+				_retreating = true;
+				StartCoroutine(EndBattleRoutine());
+			}
+			else
+			{
+				_battleNotice.Activate("You couldn't Escape!!");
+				NextTurn();
+			}
 		}
 		else
 		{
-			_battleNotice.Activate("You couldn't Escape!!");
-			NextTurn();
+			_battleNotice.Activate("You are not allowed to retreat from this battle!");
 		}
 	}
 

@@ -8,7 +8,7 @@ public class BattleStarter : MonoBehaviour
 
 	public BattleType[] _potentialBattles;
 
-	[SerializeField] bool _activateOnEnter, _activateOnStay, _activateOnExit, _dactivateAfterStarting;
+	[SerializeField] bool _activateOnEnter, _activateOnStay, _activateOnExit, _dactivateAfterStarting, _canRetreat = true;
 
 	[SerializeField] float _timeBetweenBattles = 10f;
 
@@ -95,7 +95,7 @@ public class BattleStarter : MonoBehaviour
 
 		yield return new WaitForSeconds(0.5f);
 
-		BattleManager.Instance.BattleStart(_potentialBattles[selectedBattle]._enemies);
+		BattleManager.Instance.BattleStart(_potentialBattles[selectedBattle]._enemies, _canRetreat);
 
 		if (_dactivateAfterStarting)
 			gameObject.SetActive(false);
