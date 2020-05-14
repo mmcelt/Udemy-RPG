@@ -134,3 +134,5 @@ MonoBehaviour:
   _dactivateAfterStarting: 1
   _canRetreat: 0
   _timeBetweenBattles: 10
+  _shouldCompleteQuest: 0
+  _questToComplete: 

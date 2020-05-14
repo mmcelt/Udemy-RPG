@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/_Scenes/Shop.unity
     guid: f15bb13ed2438344d892cd1167a0cabe
   - enabled: 1
+    path: Assets/_Scenes/Cave.unity
+    guid: c2456614230f2ce49811865453a06349
+  - enabled: 1
     path: Assets/_Scenes/GameOver.unity
     guid: c2142d7ac2930b4438acdf7e99bc1a2c
   - enabled: 0

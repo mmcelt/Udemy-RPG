@@ -13,6 +13,9 @@ public class BattleRewards : MonoBehaviour
 	[SerializeField] GameObject _rewardScreen;
 	[SerializeField] string[] _rewardItems;
 	[SerializeField] int _xpEarned;
+	public bool _markQuestComplete;
+	public string _questToMark;
+
 	//TODO: ADD GOLD...
 
 	#endregion
@@ -76,6 +79,11 @@ public class BattleRewards : MonoBehaviour
 
 		GameManager.Instance._battleActive = false;
 		_rewardScreen.SetActive(false);
+
+		if (_markQuestComplete)
+		{
+			QuestManager.Instance.MarkQuestComplete(_questToMark);
+		}
 	}
 	#endregion
 

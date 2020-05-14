@@ -28,15 +28,15 @@ public class QuestManager : MonoBehaviour
 		_questMarkersComplete = new bool[_questMarkerNames.Length];
 	}
 	
-	void Update() 
-	{
-		if (Input.GetKeyDown(KeyCode.Q))
-		{
-			Debug.Log(CheckIfComplete("quest test"));
-			MarkQuestComplete("quest test");
-			MarkQuestIncomplete("fight the dragon");
-		}
-	}
+	//void Update() 
+	//{
+	//	if (Input.GetKeyDown(KeyCode.Q))
+	//	{
+	//		Debug.Log(CheckIfComplete("quest test"));
+	//		MarkQuestComplete("quest test");
+	//		MarkQuestIncomplete("fight the dragon");
+	//	}
+	//}
 	#endregion
 
 	#region Public Methods

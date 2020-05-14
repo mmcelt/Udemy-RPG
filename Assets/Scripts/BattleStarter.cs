@@ -12,6 +12,9 @@ public class BattleStarter : MonoBehaviour
 
 	[SerializeField] float _timeBetweenBattles = 10f;
 
+	[SerializeField] bool _shouldCompleteQuest;
+	[SerializeField] string _questToComplete;
+
 	float _betweenBattleCounter;
 	bool _inArea;
 
@@ -99,6 +102,9 @@ public class BattleStarter : MonoBehaviour
 
 		if (_dactivateAfterStarting)
 			gameObject.SetActive(false);
+
+		BattleRewards.Instance._markQuestComplete = _shouldCompleteQuest;
+		BattleRewards.Instance._questToMark = _questToComplete;
 	}
 	#endregion
 }

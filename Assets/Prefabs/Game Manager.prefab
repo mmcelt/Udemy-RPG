@@ -187,8 +187,8 @@ MonoBehaviour:
   - enter the cave
   - quest test
   - save the world
-  - do something
-  - load test
+  - open cave entrance
+  - end game
   _questMarkersComplete: 
 --- !u!1 &6816193948864188211
 GameObject:

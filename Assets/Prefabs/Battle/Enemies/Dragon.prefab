@@ -274,8 +274,8 @@ MonoBehaviour:
   - Slash
   - Fireball
   _charName: Dragon
-  _currentHP: 1000
-  _maxHP: 1000
+  _currentHP: 100
+  _maxHP: 100
   _currentMP: 0
   _maxMP: 0
   _STR: 10

@@ -13263,6 +13263,7 @@ MonoBehaviour:
   - {fileID: 837523526729459293, guid: 9faca68f36b5f4847b0f13217377b1b4, type: 3}
   - {fileID: 3485477476277046174, guid: 506e7e5dfe72ccb4098c26d7a17f6f7e, type: 3}
   - {fileID: 2016347223664328683, guid: 0de6791c07fb0ad4ea421ed857dcc832, type: 3}
+  - {fileID: 42730844241773074, guid: ae01b789d174ab34db58d4b599aed2e2, type: 3}
   _gameOverScene: GameOver
   _activeBattlers: []
   _currentTurn: 0
@@ -13384,7 +13385,10 @@ MonoBehaviour:
   - {fileID: 4638990439958175808}
   - {fileID: 4638990439867920130}
   _useButton: {fileID: 6927289093362468972}
-  _enemyHealthbars: []
+  _rewardXP: 500
+  _rewardItems:
+  - Iron Sword
+  - Iron Armor
 --- !u!1 &4638990441130135513
 GameObject:
   m_ObjectHideFlags: 0
