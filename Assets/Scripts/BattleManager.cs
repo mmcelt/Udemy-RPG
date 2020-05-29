@@ -9,6 +9,7 @@ public class BattleManager : MonoBehaviour
 	#region Fields
 
 	public static BattleManager Instance;
+
 	[Header("General")]
 	[SerializeField] GameObject _battleScene;
 	[SerializeField] Transform[] _playerPositions;
