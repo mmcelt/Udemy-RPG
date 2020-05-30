@@ -13,24 +13,26 @@ public class GameMenu : MonoBehaviour
 
 	public GameObject _theMenu;
 	[Header("Character Status Panel")]
-	[SerializeField] GameObject[] _charStatPanels;
+	[SerializeField] GameObject[] _charStatHolders;
 	[SerializeField] Text[] _nameTexts, _hpTexts, _mpTexts, _lvlTexts, _expTexts;
 	[SerializeField] Slider[] _expSliders;
 	[SerializeField] Image[] _charImages;
 	[SerializeField] GameObject[] _windows;
 	[Header("Player Status Panels")]
 	[SerializeField] GameObject[] _statusButtons;
-	[SerializeField] Image _playerImage;
-	[SerializeField] Text _nameText, _hpText, _mpText, _strText, _defText, _wpnText, _wpnPwrText, _armText, _armPwrText, _expText;
+	[SerializeField] Image _statusImage;
+	[SerializeField] Text _statusName, _statusHP, _statusMP, _statusStr, _statusDef, _statusWpnEqpd, _statusWpnPwr, _statusArmEqpd, _statusArmPwr, _statusExp;
 	[Header("Item Panel")]
 	[SerializeField] ItemButtton[] _itemButtons;
-	string _selectedItem;
+	//string _selectedItem;
 	Item _activeItem;
 	public Button _useButton, _dropButton;
 	[SerializeField] Text _itemName, _itemDescription, _useButtonText;
-	[SerializeField] GameObject _selectCharacterPamel;
-	[SerializeField] Text[] _selectCharacterButtonTexts;
-	[SerializeField] Text _goldAmountText;
+	[SerializeField] GameObject _itemCharChoiceMenu;
+	[SerializeField] Text[] _itemCharChoiceNames;
+	[SerializeField] Text _goldText;
+
+	[SerializeField] string _mainMenuName;
 
 	CharSats[] _playerStats;
 
@@ -55,7 +57,7 @@ public class GameMenu : MonoBehaviour
 	{
 		if (Input.GetButtonDown("Fire2"))
 		{
-			if (_theMenu.activeSelf)
+			if (_theMenu.activeInHierarchy)
 			{
 				//_theMenu.SetActive(false);
 				//GameManager.Instance._gameMenuOpen = false;
@@ -77,13 +79,13 @@ public class GameMenu : MonoBehaviour
 
 	public void UpdateMainStats()
 	{
-		_playerStats = GameManager.Instance._playerStats;
+		_playerStats = GameManager.Instance.playerStats;
 
 		for(int i=0; i<_playerStats.Length; i++)
 		{
-			if (_playerStats[i].gameObject.activeSelf)
+			if (_playerStats[i].gameObject.activeInHierarchy)
 			{
-				_charStatPanels[i].SetActive(true);
+				_charStatHolders[i].SetActive(true);
 
 				_nameTexts[i].text = _playerStats[i]._charName;
 				_hpTexts[i].text = "HP: " + _playerStats[i]._currentHP + "/" + _playerStats[i]._maxHP;
@@ -96,11 +98,11 @@ public class GameMenu : MonoBehaviour
 			}
 			else
 			{
-				_charStatPanels[i].SetActive(false);
+				_charStatHolders[i].SetActive(false);
 			}
 		}
 
-		_goldAmountText.text = GameManager.Instance._currentGold + "g";
+		_goldText.text = GameManager.Instance._currentGold + "g";
 	}
 
 	public void ToggleWindow(int windowIndex)
@@ -111,14 +113,14 @@ public class GameMenu : MonoBehaviour
 		{
 			if (i == windowIndex)
 			{
-				_windows[i].SetActive(!_windows[i].activeSelf);
+				_windows[i].SetActive(!_windows[i].activeInHierarchy);
 			}
 			else
 			{
 				_windows[i].SetActive(false);
 			}
 		}
-		_selectCharacterPamel.SetActive(false);
+		_itemCharChoiceMenu.SetActive(false);
 	}
 
 	public void CloseMenu()
@@ -128,48 +130,47 @@ public class GameMenu : MonoBehaviour
 
 		_theMenu.SetActive(false);
 		GameManager.Instance._gameMenuOpen = false;
-		_selectCharacterPamel.SetActive(false);
+		_itemCharChoiceMenu.SetActive(false);
 	}
 
 	public void OpenStatus()
 	{
 		UpdateMainStats();
-
-		for(int i=0; i<_statusButtons.Length; i++)
-		{
-			_statusButtons[i].SetActive(_playerStats[i].gameObject.activeSelf);
-			_statusButtons[i].GetComponentInChildren<Text>().text = _playerStats[i]._charName;
-		}
-
 		//update the player data...
 		UpdateCharStatus(0);
+
+		for (int i=0; i<_statusButtons.Length; i++)
+		{
+			_statusButtons[i].SetActive(_playerStats[i].gameObject.activeInHierarchy);
+			_statusButtons[i].GetComponentInChildren<Text>().text = _playerStats[i]._charName;
+		}
 	}
 
 	public void UpdateCharStatus(int selectedChar)
 	{
 		UpdateMainStats();
 
-		_playerImage.sprite = _playerStats[selectedChar]._charImage;
-		_nameText.text = _playerStats[selectedChar]._charName;
-		_hpText.text = _playerStats[selectedChar]._currentHP + "/" + _playerStats[selectedChar]._maxHP;
-		_mpText.text = _playerStats[selectedChar]._currentMP + "/" + _playerStats[selectedChar]._maxMP;
-		_strText.text = _playerStats[selectedChar]._strength.ToString();
-		_defText.text = _playerStats[selectedChar]._defense.ToString();
+		_statusImage.sprite = _playerStats[selectedChar]._charImage;
+		_statusName.text = _playerStats[selectedChar]._charName;
+		_statusHP.text = _playerStats[selectedChar]._currentHP + "/" + _playerStats[selectedChar]._maxHP;
+		_statusMP.text = _playerStats[selectedChar]._currentMP + "/" + _playerStats[selectedChar]._maxMP;
+		_statusStr.text = _playerStats[selectedChar]._strength.ToString();
+		_statusDef.text = _playerStats[selectedChar]._defense.ToString();
 
 		if (_playerStats[selectedChar]._equippedWpn != "")
-			_wpnText.text = _playerStats[selectedChar]._equippedWpn;
+			_statusWpnEqpd.text = _playerStats[selectedChar]._equippedWpn;
 		else
-			_wpnText.text = "None";
+			_statusWpnEqpd.text = "None";
 
-		_wpnPwrText.text = _playerStats[selectedChar]._weaponPwr.ToString();
+		_statusWpnPwr.text = _playerStats[selectedChar]._weaponPwr.ToString();
 
 		if (_playerStats[selectedChar]._equippedArm != "")
-			_armText.text = _playerStats[selectedChar]._equippedArm;
+			_statusArmEqpd.text = _playerStats[selectedChar]._equippedArm;
 		else
-			_armText.text = "None";
+			_statusArmEqpd.text = "None";
 
-		_armPwrText.text = _playerStats[selectedChar]._armorPwr.ToString();
-		_expText.text = (_playerStats[selectedChar]._expToNextLevel[_playerStats[selectedChar]._charLevel] - _playerStats[selectedChar]._currentEXP).ToString();
+		_statusArmPwr.text = _playerStats[selectedChar]._armorPwr.ToString();
+		_statusExp.text = (_playerStats[selectedChar]._expToNextLevel[_playerStats[selectedChar]._charLevel] - _playerStats[selectedChar]._currentEXP).ToString();
 	}
 
 	public void ShowItems()
@@ -227,18 +228,18 @@ public class GameMenu : MonoBehaviour
 	{
 		if (_activeItem == null) return;
 
-		_selectCharacterPamel.SetActive(true);
+		_itemCharChoiceMenu.SetActive(true);
 
-		for (int i = 0; i < _selectCharacterButtonTexts.Length; i++)
+		for (int i = 0; i < _itemCharChoiceNames.Length; i++)
 		{
-			_selectCharacterButtonTexts[i].text = GameManager.Instance._playerStats[i]._charName;
-			_selectCharacterButtonTexts[i].transform.parent.gameObject.SetActive(GameManager.Instance._playerStats[i].gameObject.activeSelf);
+			_itemCharChoiceNames[i].text = GameManager.Instance.playerStats[i]._charName;
+			_itemCharChoiceNames[i].transform.parent.gameObject.SetActive(GameManager.Instance.playerStats[i].gameObject.activeInHierarchy);
 		}
 	}
 
 	public void CloseItemCharacterChoice()
 	{
-		_selectCharacterPamel.SetActive(false);
+		_itemCharChoiceMenu.SetActive(false);
 	}
 
 	public void SaveGame()

@@ -7664,7 +7664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &817422735
 RectTransform:
   m_ObjectHideFlags: 0
@@ -46190,7 +46190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _theMenu: {fileID: 1571679211}
-  _charStatPanels:
+  _charStatHolders:
   - {fileID: 1274766495}
   - {fileID: 971601702}
   - {fileID: 1966214117}
@@ -46229,17 +46229,17 @@ MonoBehaviour:
   - {fileID: 1354334745}
   - {fileID: 2046486036}
   - {fileID: 1299204525}
-  _playerImage: {fileID: 1528803803}
-  _nameText: {fileID: 1207514438}
-  _hpText: {fileID: 769433367}
-  _mpText: {fileID: 684211500}
-  _strText: {fileID: 386280390}
-  _defText: {fileID: 1089763012}
-  _wpnText: {fileID: 83799094}
-  _wpnPwrText: {fileID: 753362105}
-  _armText: {fileID: 1654032400}
-  _armPwrText: {fileID: 896542545}
-  _expText: {fileID: 21100919}
+  _statusImage: {fileID: 1528803803}
+  _statusName: {fileID: 1207514438}
+  _statusHP: {fileID: 769433367}
+  _statusMP: {fileID: 684211500}
+  _statusStr: {fileID: 386280390}
+  _statusDef: {fileID: 1089763012}
+  _statusWpnEqpd: {fileID: 83799094}
+  _statusWpnPwr: {fileID: 753362105}
+  _statusArmEqpd: {fileID: 1654032400}
+  _statusArmPwr: {fileID: 896542545}
+  _statusExp: {fileID: 21100919}
   _itemButtons:
   - {fileID: 1604685577}
   - {fileID: 1404623702}
@@ -46286,12 +46286,13 @@ MonoBehaviour:
   _itemName: {fileID: 1872423932}
   _itemDescription: {fileID: 1562599831}
   _useButtonText: {fileID: 1830703994}
-  _selectCharacterPamel: {fileID: 817422734}
-  _selectCharacterButtonTexts:
+  _itemCharChoiceMenu: {fileID: 817422734}
+  _itemCharChoiceNames:
   - {fileID: 1796784028}
   - {fileID: 796793062}
   - {fileID: 512041559}
-  _goldAmountText: {fileID: 6411644707420619205}
+  _goldText: {fileID: 6411644707420619205}
+  _mainMenuName: MainMenu
 --- !u!114 &1638303415091636119
 MonoBehaviour:
   m_ObjectHideFlags: 0

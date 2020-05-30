@@ -64,11 +64,11 @@ public class BattleRewards : MonoBehaviour
 
 	public void CloseRewardScreen()
 	{
-		for(int i=0; i<GameManager.Instance._playerStats.Length; i++)
+		for(int i=0; i<GameManager.Instance.playerStats.Length; i++)
 		{
-			if (GameManager.Instance._playerStats[i].gameObject.activeSelf && !GameManager.Instance._playerStats[i]._isDead)
+			if (GameManager.Instance.playerStats[i].gameObject.activeSelf && !GameManager.Instance.playerStats[i]._isDead)
 			{
-				GameManager.Instance._playerStats[i].AddExp(_xpEarned);
+				GameManager.Instance.playerStats[i].AddExp(_xpEarned);
 			}
 		}
 

@@ -40,8 +40,8 @@ public class CharSats : MonoBehaviour
 
 		CalculateExpToNextLevels();
 		//set initial HP/MP to max
-		_currentHP = _maxHP;
-		_currentMP = _maxMP;
+		//_currentHP = _maxHP;
+		//_currentMP = _maxMP;
 	}
 	
 	void Update() 

@@ -127,17 +127,17 @@ public class BattleManager : MonoBehaviour
 
 			for (int i = 0; i < _playerPositions.Length; i++)
 			{
-				if (GameManager.Instance._playerStats[i].gameObject.activeSelf)
+				if (GameManager.Instance.playerStats[i].gameObject.activeSelf)
 				{
 					foreach (BattleChar player in _playerPrefabs)
 					{
-						if (player._charName == GameManager.Instance._playerStats[i]._charName)
+						if (player._charName == GameManager.Instance.playerStats[i]._charName)
 						{
 							BattleChar newPlayer = Instantiate(player, _playerPositions[i].transform.position, Quaternion.identity);
 							newPlayer.transform.SetParent(_playerPositions[i]);
 							_activeBattlers.Add(newPlayer);
 
-							CharSats thePlayer = GameManager.Instance._playerStats[i];
+							CharSats thePlayer = GameManager.Instance.playerStats[i];
 
 							_activeBattlers[i]._currentHP = thePlayer._currentHP;
 							_activeBattlers[i]._maxHP = thePlayer._maxHP;
@@ -548,17 +548,17 @@ public class BattleManager : MonoBehaviour
 		{
 			if (_activeBattlers[i]._isPlayer)
 			{
-				for (int j = 0; j < GameManager.Instance._playerStats.Length; j++)
+				for (int j = 0; j < GameManager.Instance.playerStats.Length; j++)
 				{
-					if (_activeBattlers[i]._charName == GameManager.Instance._playerStats[j]._charName)
+					if (_activeBattlers[i]._charName == GameManager.Instance.playerStats[j]._charName)
 					{
-						GameManager.Instance._playerStats[j]._currentHP = _activeBattlers[i]._currentHP;
-						GameManager.Instance._playerStats[j]._currentMP = _activeBattlers[i]._currentMP;
-						GameManager.Instance._playerStats[j]._armorPwr = _activeBattlers[i]._armPwr;
-						GameManager.Instance._playerStats[j]._equippedArm = _activeBattlers[i]._equippedArm;
-						GameManager.Instance._playerStats[j]._weaponPwr = _activeBattlers[i]._wpnPwr;
-						GameManager.Instance._playerStats[j]._equippedWpn = _activeBattlers[i]._equippedWpn;
-						GameManager.Instance._playerStats[j]._isDead = _activeBattlers[i]._hasDied;
+						GameManager.Instance.playerStats[j]._currentHP = _activeBattlers[i]._currentHP;
+						GameManager.Instance.playerStats[j]._currentMP = _activeBattlers[i]._currentMP;
+						GameManager.Instance.playerStats[j]._armorPwr = _activeBattlers[i]._armPwr;
+						GameManager.Instance.playerStats[j]._equippedArm = _activeBattlers[i]._equippedArm;
+						GameManager.Instance.playerStats[j]._weaponPwr = _activeBattlers[i]._wpnPwr;
+						GameManager.Instance.playerStats[j]._equippedWpn = _activeBattlers[i]._equippedWpn;
+						GameManager.Instance.playerStats[j]._isDead = _activeBattlers[i]._hasDied;
 					}
 				}
 			}
